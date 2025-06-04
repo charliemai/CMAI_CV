@@ -5,55 +5,51 @@ import { getCollection } from "astro:content";
 import createSlug from "../lib/createSlug"
 
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
 const last_posts = posts.slice(0, 3);
 ---
 
 <BaseLayout sideBarActiveItemID="home">
   <div class="pb-12 mt-5">
-    <div class="text-xl py-1">Hey there 👋</div>
-    <div class="text-5xl font-bold">I'm Manuel Ernesto</div>
-    <div class="text-3xl py-3 font-bold">Software Engineer and Entrepreneur</div>
+    <div class="text-xl py-1">Welcome!</div>
+    <div class="text-5xl font-bold">I'm YUNG-CHI(Charlie) MAI</div>
+    <div class="text-3xl py-3 font-bold">Cloud Engineer & MSc Applicant</div>
     <div class="py-2">
-      <text class="text-lg">
-        This is <b>Astrofy</b> a free and open-source template for your Personal Portfolio Website built with Astro and TailwindCSS.
-        Create in minutes a website with Blog, CV, Project Section, Store and RSS Feed. I hope you find
-        it useful!
-      </text>
+      <p class="text-lg">
+        This is my personal application site created to showcase my qualifications for MSc in Computer Science (AI Track) at Trinity College Dublin. I have 15+ years of experience across DevOps, cloud services, mobile apps, and GPT-based AI tools.
+      </p>
     </div>
     <div class="mt-8">
-      <a class="btn" href="https://twitter.com/manuelernestog" target="_blank"> Let's connect!</a>
-      <a href="https://github.com/manuelernestog/astrofy" target="_blank" class="btn btn-outline ml-5">
-        Get This template
-      </a>
+      <a class="btn" href="/cv.pdf" target="_blank">Download CV</a>
+      <a href="https://lkk.dev" target="_blank" class="btn btn-outline ml-5">View My App</a>
     </div>
   </div>
 
   <div>
-    <div class="text-3xl w-full font-bold mb-2">My last projects {"</>"}</div>
+    <div class="text-3xl w-full font-bold mb-2">Highlighted Projects {"</>"}</div>
   </div>
 
   <HorizontalCard
-    title="Demo Project 1"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="NEW"
+      title="Vouchgether Discount App"
+      img="/project_vouchgether.webp"
+      desc="A React Native app to share and claim discount vouchers across Ireland. Integrated with AWS services and AI classification logic."
+      url="https://lkk.dev"
+      badge="Live"
   />
   <div class="divider my-0"></div>
   <HorizontalCard
-    title="Demo Project 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
+      title="Parking Violation Reporter"
+      img="/project_parking.webp"
+      desc="Single-handedly developed a citizen app that handled 400,000+ violation reports in Taiwan within one year."
+      url="#"
+      badge="Popular"
   />
   <div class="divider my-0"></div>
   <HorizontalCard
-    title="Demo Project 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
+      title="Custom GPT AI Agent"
+      img="/project_ai.webp"
+      desc="Personal GPT-based assistant with Pinecone-powered vector search. Supports document ingestion and semantic Q&A."
+      url="#"
+      badge="AI"
   />
 
   <div>
@@ -62,17 +58,17 @@ const last_posts = posts.slice(0, 3);
 
   {
     last_posts.map((post) => (
-      <>
-        <HorizontalCard
-          title={post.data.title}
-          img={post.data.heroImage}
-          desc={post.data.description}
-          url={"/blog/" + createSlug(post.data.title, post.slug)}
-          target="_self"
-          badge={post.data.badge}
-        />
-        <div class="divider my-0" />
-      </>
+        <>
+          <HorizontalCard
+              title={post.data.title}
+              img={post.data.heroImage}
+              desc={post.data.description}
+              url={"/blog/" + createSlug(post.data.title, post.slug)}
+              target="_self"
+              badge={post.data.badge}
+          />
+          <div class="divider my-0" />
+        </>
     ))
   }
 </BaseLayout>
