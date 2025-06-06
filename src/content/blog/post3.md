@@ -1,57 +1,34 @@
 ---
-title: "Demo Post 3"
-description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-pubDate: "Sep 12 2022"
-heroImage: "/post_img.webp"
-badge: "Demo badge"
-tags: ["rust","tokio"]
+title: "Why I'm Building My Own GPT-based Troubleshooting Agent"
+description: "How I designed a GPT-powered assistant to semantically search my own documentation and streamline technical investigations."
+pubDate: "Jun 6 2025"
+heroImage: "/Troubleshooting_Agent.png"
+tags: ["RAG", "GPT", "DevOps", "Pinecone"]
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer
-malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas
-pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse
-platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada
-fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea
-dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst
-quisque sagittis purus sit amet.
+Troubleshooting complex systems has always been a major part of my job—whether during my years at **Amazon Web Service(AWS)** helping global enterprises resolve urgent technical issues, or now at **National Broadband Ireland**, supporting national infrastructure in a mission-critical DevOps role.
 
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum
-quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet.
-Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus.
-Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit
-ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt
-dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus
-arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed
-tempus urna et pharetra pharetra massa massa ultricies mi.
+But the tools we rely on—manual document searches, outdated Confluence pages, scattered logs—just don’t scale with the complexity of modern distributed systems.
 
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam
-sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec.
-Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna
-fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et
-egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel
-turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra
-nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim
-praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus
-egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam
-ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor
-purus non. Amet dictum sit amet justo donec enim.
+That’s why I built my own **GPT-based troubleshooting agent**: a fully personalized AI system capable of understanding, remembering, and evolving with the way I work.
 
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut
-consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra.
-Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor
-dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor
-dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque
-eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices
-tincidunt arcu. Id cursus metus aliquam eleifend mi.
+The system—**CMAI GPT**—ingests my documents, high-level designs, logs, and even pipeline specs, transforming them into searchable vector embeddings with **Pinecone**. It then uses **OpenAI's GPT-4 Turbo** for **retrieval-augmented generation (RAG)**, delivering precise, context-aware answers to my queries in real-time.
 
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus
-imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu
-cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt
-dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat
-sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida.
-Egestas integer eget aliquet nibh praesent tristique magna.
+But I didn’t stop there.
+
+I added:
+- **Lambda-based embedding pipelines**
+- **FastAPI-powered endpoints**
+- **Semantic memory that learns from feedback**
+- **Dynamic document ingestion and auto-indexing**
+- **Vector drift awareness and self-reinforcement loops**
+
+This isn’t just a knowledge base—it’s a **self-evolving AI partner** that grows smarter as I work. It can explain edge-case bugs, trace architectural dependencies, and answer questions faster than any team wiki ever could.
+
+The deeper I built, the clearer my goal became: I want to develop **AI agents that enhance human cognition**. Tools that help engineers like me **think more clearly**, **solve faster**, and **retain institutional knowledge** over time.
+
+This project is also what inspired me to pursue formal AI education. I want to strengthen my theoretical grounding—not just in GPTs and embeddings, but in model architectures, RLHF, and responsible deployment strategies.
+
+Because I believe we are at the edge of something transformative—not just for productivity, but for how we **transfer knowledge**, **accelerate expertise**, and **empower individuals and nations** alike.
+
+This agent is my first step.

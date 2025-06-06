@@ -1,56 +1,46 @@
 ---
-title: "Demo Post 1"
-description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-pubDate: "Sep 10 2022"
-heroImage: "/post_img.webp"
-tags: ["tokio"]
+title: "Self-evolving AI Agents: My Vision and Challenges"
+description: "Exploring the potential of AI agents that can adapt and grow from usage—what I’ve built so far and what I hope to learn."
+pubDate: "Jun 6 2025"
+heroImage: "/Self-evolving_AI_Agents.png"
+tags: ["AI", "AutonomousAgents", "Vision"]
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer
-malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas
-pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse
-platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada
-fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea
-dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst
-quisque sagittis purus sit amet.
+As my career has grown—from software engineering to global cloud support and now DevOps—I’ve come to realize something powerful: I’ve accumulated a vast body of domain knowledge.
 
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum
-quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet.
-Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus.
-Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit
-ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt
-dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus
-arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed
-tempus urna et pharetra pharetra massa massa ultricies mi.
+Cloud infrastructure, CI/CD systems, Python automation, debugging strategies, cross-cultural collaboration—these are not just technical checkboxes, but **hard-earned experiences** that helped me support hundreds of organizations, from nimble startups to Fortune 500 clients.
 
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam
-sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec.
-Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna
-fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et
-egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel
-turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra
-nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim
-praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus
-egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam
-ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor
-purus non. Amet dictum sit amet justo donec enim.
+But what if that knowledge could be made searchable, contextual, and continuously growing?  
+What if I could build an **AI agent that not only assists me—but evolves with me**?
 
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut
-consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra.
-Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor
-dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor
-dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque
-eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices
-tincidunt arcu. Id cursus metus aliquam eleifend mi.
+That’s the vision behind my **self-evolving AI assistant**.
 
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus
-imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu
-cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt
-dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat
-sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida.
-Egestas integer eget aliquet nibh praesent tristique magna.
+This isn’t just a chatbot—it’s a dynamic semantic system that:
+- **understands** my documents,
+- **recalls** past support cases and logs,
+- and **learns** from our ongoing interaction loop.
+
+Technically, it’s already running:
+- Vector embeddings via Pinecone,
+- Retrieval-Augmented Generation (RAG) using GPT-4 Turbo,
+- Contextual document ingestion and feedback memory loop.
+
+But I’m aiming higher: I want to integrate **reinforcement signals**, **edge-case escalation**, and **human-style validation**, turning it into a **trustworthy knowledge companion**.
+
+Why? Because I believe such a system isn’t just useful—it’s necessary.
+
+In an era of constant information overload, a self-growing AI agent can:
+- **Amplify cognition beyond human memory**,
+- **Preserve institutional knowledge**, and
+- **Empower DevOps engineers, researchers, and even entire governments** to make better decisions, faster.
+
+And this isn’t theoretical—I’ve lived it.
+
+Just like I once passionately pursued programming and earned my Master’s in IT at QUT, leading to high-impact roles at global companies like AWS, I’m now ready to enter the next frontier: **AI research and development**.
+
+With Trinity College Dublin’s MSc in Computer Science (AI Track), I seek to complement my practical expertise with a deeper theoretical foundation in adaptive systems, machine learning architectures, and responsible AI development.
+
+As someone currently serving at **National Broadband Ireland**, I’m deeply motivated to bring these skills back to the country I now call home. My long-term vision is to help Ireland build not just AI tools—but **AI collaborators**, systems that **elevate human intelligence** while preserving well-being.
+
+My goal is not just to build a tool—but a partner.  
+An AI agent that grows with me, works alongside me, and helps others grow too.
