@@ -1,16 +1,23 @@
 ---
-title: "Demo Post 2"
-description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-pubDate: "Sep 11 2022"
-heroImage: "/post_img.webp"
+title: "Why I Want to Pursue an MSc in AI at Trinity"
+description: "From DevOps to AI agents—how my journey led to the pursuit of formal training in Artificial Intelligence at Trinity College Dublin."
+pubDate: "Jun 6 2025"
+heroImage: "/Pursue_MSc_AI.png"
+tags: ["Trinity", "Motivation", "Study"]
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+I’ve always been drawn to building tools that work for people—whether that’s a parking violation app that helped transform citizen reporting in Taiwan, or a GPT-based assistant that augments my own DevOps workflows.
 
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc. Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra massa massa ultricies mi.
+Over the years, I’ve built systems that have had real impact. My citizen-reporting app processed over **440,000 traffic violation cases in a single year**, empowering law enforcement to serve the public more efficiently. More recently, I launched **Vouchgether**, a discount-sharing app built for communities in Ireland to **save money and encourage generosity**.
 
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
+These projects taught me something important: good software helps people—but **AI has the potential to amplify that impact exponentially**.
 
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
+As I now work at **National Broadband Ireland**, I’ve already identified many areas where AI can be directly applied to national infrastructure—from intelligent fault detection to smarter resource optimization. The possibilities excite me deeply. And yet, I know that to truly unlock this power, I need deeper knowledge—**not just tools, but principles**.
 
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
+That’s why I’m applying to **Trinity College Dublin’s MSc in Computer Science (AI Track)**. Trinity’s reputation for academic excellence and cutting-edge research in adaptive computation aligns perfectly with my path. I don’t just want to consume AI APIs—I want to understand how they work, how to build them ethically, and how to scale them responsibly.
+
+This is not a career switch—it’s an evolution of purpose.
+
+Just as I once pursued my passion for software engineering and earned a Master’s degree from QUT, which led me to serve enterprise clients at AWS and beyond, I now feel ready to go deeper. My dream is to **build AI systems that benefit people, communities, and countries**—starting here in Ireland.
+
+This degree is the next step toward that dream.
