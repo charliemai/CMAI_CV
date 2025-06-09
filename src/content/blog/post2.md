@@ -1,23 +1,25 @@
 ---
-title: "Why I Want to Pursue an MSc in AI at Trinity"
-description: "From DevOps to AI agents—how my journey led to the pursuit of formal training in Artificial Intelligence at Trinity College Dublin."
+title: "Why I Want to Pursue a Master's in AI and Evolve My Impact"
+description: "From DevOps to AI agents—how building practical systems inspired me to pursue formal AI study at a top Irish university."
 pubDate: "Jun 6 2025"
 heroImage: "/Pursue_MSc_AI.png"
-tags: ["Trinity", "Motivation", "Study"]
+tags: ["Ireland", "AI", "Postgraduate", "Motivation"]
 ---
 
-I’ve always been drawn to building tools that work for people—whether that’s a parking violation app that helped transform citizen reporting in Taiwan, or a GPT-based assistant that augments my own DevOps workflows.
+I’ve always been passionate about building practical systems that help people—whether it’s a traffic violation reporting app that empowered civic engagement in Taiwan, or a GPT-based assistant that supports complex DevOps workflows in my current work.
 
-Over the years, I’ve built systems that have had real impact. My citizen-reporting app processed over **440,000 traffic violation cases in a single year**, empowering law enforcement to serve the public more efficiently. More recently, I launched **Vouchgether**, a discount-sharing app built for communities in Ireland to **save money and encourage generosity**.
+Over the years, I’ve led the development of tools that made real-world impact. One citizen platform I built facilitated over 440,000 traffic violation reports in just one year, helping local governments deliver faster public services. Most recently, I launched Vouchgether, a community-oriented app in Ireland that enables people to share discounts, save money, and support each other.
 
-These projects taught me something important: good software helps people—but **AI has the potential to amplify that impact exponentially**.
+These experiences have shaped my conviction that while good software solves problems, AI can solve them at scale—with deeper intelligence and wider reach.
 
-As I now work at **National Broadband Ireland**, I’ve already identified many areas where AI can be directly applied to national infrastructure—from intelligent fault detection to smarter resource optimization. The possibilities excite me deeply. And yet, I know that to truly unlock this power, I need deeper knowledge—**not just tools, but principles**.
+As part of the team at National Broadband Ireland, I now support the infrastructure of an entire nation. I’ve observed firsthand how AI can revolutionize network monitoring, predictive fault detection, and customer issue resolution. The opportunity to integrate intelligent systems into national infrastructure is both thrilling and urgent.
 
-That’s why I’m applying to **Trinity College Dublin’s MSc in Computer Science (AI Track)**. Trinity’s reputation for academic excellence and cutting-edge research in adaptive computation aligns perfectly with my path. I don’t just want to consume AI APIs—I want to understand how they work, how to build them ethically, and how to scale them responsibly.
+To do this well, I don’t just want to apply pre-built AI services—I want to understand how they work, how to build them securely and ethically, and how to adapt them to solve meaningful problems.
 
-This is not a career switch—it’s an evolution of purpose.
+That’s why I’m applying to pursue a Master’s degree in Computer Science with a focus on Artificial Intelligence at one of Ireland’s top institutions—Trinity College Dublin, University College Dublin, or Dublin City University.
 
-Just as I once pursued my passion for software engineering and earned a Master’s degree from QUT, which led me to serve enterprise clients at AWS and beyond, I now feel ready to go deeper. My dream is to **build AI systems that benefit people, communities, and countries**—starting here in Ireland.
+I am not making a career shift—I’m deepening a mission. Just as I once pursued software engineering through my Master’s at QUT, and went on to support global clients at AWS and Verizon, I now want to dedicate myself to the next frontier: AI for public good.
 
-This degree is the next step toward that dream.
+My goal is to build scalable, trustworthy AI systems that empower people and benefit society—starting with the communities and infrastructure here in Ireland.
+
+This Master’s programme is the foundation I need to bring that vision to life.
