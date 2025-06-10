@@ -16,7 +16,7 @@ As part of the team at National Broadband Ireland, I now support the infrastruct
 
 To do this well, I don’t just want to apply pre-built AI services—I want to understand how they work, how to build them securely and ethically, and how to adapt them to solve meaningful problems.
 
-That’s why I’m applying to pursue a Master’s degree in Computer Science with a focus on Artificial Intelligence at one of Ireland’s top institutions—Trinity College Dublin, University College Dublin, or Dublin City University.
+That’s why I’m applying to pursue a Master’s degree in Computer Science with a focus on Artificial Intelligence at one of Ireland’s top institutions—Trinity College Dublin, University College Dublin, Dublin City University, University of Limerick, University of Galway.
 
 I am not making a career shift—I’m deepening a mission. Just as I once pursued software engineering through my Master’s at QUT, and went on to support global clients at AWS and Verizon, I now want to dedicate myself to the next frontier: AI for public good.
 
