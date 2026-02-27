@@ -1,0 +1,159 @@
+---
+import { type LearningSchema } from "../content/config";
+import BaseLayout from "./BaseLayout.astro";
+import dayjs from "dayjs";
+import localizedFormat from "dayjs/plugin/localizedFormat";
+import { Image } from "astro:assets";
+
+dayjs.extend(localizedFormat);
+
+export interface Props extends LearningSchema {}
+
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  heroImage,
+  badge,
+  url,
+  repo,
+  demo,
+  tech = [],
+  highlights = [],
+  metrics = [],
+  tags = [],
+  provider,
+  period,
+  status,
+} = Astro.props;
+
+const displayUpdated = updatedDate ? dayjs(updatedDate).format("ll") : undefined;
+const displayPub = pubDate ? dayjs(pubDate).format("ll") : undefined;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  image={heroImage}
+  ogType="article"
+  sideBarActiveItemID="learning"
+>
+  <main class="md:flex md:justify-center">
+    <article class="prose prose-lg max-w-[750px] prose-img:mx-auto">
+      {heroImage && (
+        <Image
+          width={750}
+          height={422}
+          format="webp"
+          src={heroImage}
+          alt={title}
+          class="w-full mb-6 rounded-xl"
+        />
+      )}
+
+      <h1 class="title my-2 text-4xl font-bold">
+        {title}
+        {badge && <span class="badge badge-secondary ml-3 align-middle">{badge}</span>}
+      </h1>
+
+      <p class="text-xl opacity-90">{description}</p>
+
+      <div class="not-prose mt-4">
+        <div class="flex flex-wrap gap-2">
+          {url && (
+            <a class="btn btn-outline btn-sm" href={url} target="_blank">
+              Visit
+            </a>
+          )}
+          {demo && (
+            <a class="btn btn-primary btn-sm" href={demo}>
+              Demo
+            </a>
+          )}
+          {repo && (
+            <a class="btn btn-outline btn-sm" href={repo} target="_blank">
+              Source
+            </a>
+          )}
+        </div>
+
+        <div class="mt-4 text-sm opacity-70">
+          {provider && (
+            <div>
+              <strong>Provider:</strong> {provider}
+            </div>
+          )}
+          {period && (
+            <div>
+              <strong>Period:</strong> {period}
+            </div>
+          )}
+          {status && (
+            <div>
+              <strong>Status:</strong> {status}
+            </div>
+          )}
+          {displayPub && (
+            <div>
+              <strong>Started:</strong> {displayPub}
+            </div>
+          )}
+          {displayUpdated && (
+            <div>
+              <strong>Last updated:</strong> {displayUpdated}
+            </div>
+          )}
+        </div>
+
+        {tech.length > 0 && (
+          <div class="mt-4">
+            <div class="font-semibold mb-2">Topics / Tools</div>
+            <div class="flex flex-wrap gap-2">
+              {tech.map((t) => (
+                <span class="badge badge-outline">{t}</span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {highlights.length > 0 && (
+          <div class="mt-6">
+            <div class="font-semibold mb-2">Key takeaways</div>
+            <ul class="list-disc ml-5 space-y-1">
+              {highlights.map((h) => (
+                <li>{h}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {metrics.length > 0 && (
+          <div class="mt-6">
+            <div class="font-semibold mb-2">Notes / Outputs</div>
+            <ul class="list-disc ml-5 space-y-1">
+              {metrics.map((m) => (
+                <li>{m}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {tags.length > 0 && (
+          <div class="mt-6">
+            <div class="font-semibold mb-2">Tags</div>
+            <div class="flex flex-wrap gap-2">
+              {tags.map((tag) => (
+                <span class="badge badge-outline">{tag}</span>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div class="divider my-6"></div>
+
+      <slot />
+    </article>
+  </main>
+</BaseLayout>

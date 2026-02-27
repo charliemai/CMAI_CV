@@ -14,7 +14,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <section id="videotranslate" class="mb-14">
     <div class="text-2xl font-bold">VideoTranslate</div>
     <p class="mt-2">
-      Upload a video to S3 → trigger an AWS pipeline → generate transcripts (and optionally subtitles/translation).
+      Upload a video to S3 → EventBridge triggers AWS Batch → generate Whisper subtitles (and optional translation).
     </p>
 
     <div class="mt-5 p-6 rounded-xl bg-base-200">
@@ -37,19 +37,73 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
           <div class="mt-5 font-semibold">Generated artifacts</div>
           <ul class="list-disc ml-5 mt-2 text-sm space-y-1">
-            <li><span class="font-mono">s3://videotranslate-output/.../transcript.json</span></li>
-            <li><span class="font-mono">s3://videotranslate-output/.../transcript.txt</span></li>
-            <li><span class="font-mono">s3://videotranslate-output/.../subtitles.srt</span> (optional)</li>
+            <li><span class="font-mono">s3://&lt;bucket&gt;/translated/zh/.../*.srt</span> (primary)</li>
+            <li><span class="font-mono">s3://&lt;bucket&gt;/translated/en/.../*.srt</span> (optional)</li>
+            <li><span class="font-mono">DynamoDB</span> record for idempotency</li>
+            <li><span class="font-mono">s3://&lt;bucket&gt;/processed/.../video.mp4</span> (archive)</li>
           </ul>
 
           <div class="mt-5 font-semibold">Pipeline sketch</div>
           <ol class="list-decimal ml-5 mt-2 text-sm space-y-1">
-            <li>S3 PutObject event</li>
-            <li>Lambda: validate + create job metadata</li>
-            <li>Step Functions: orchestrate Transcribe + post-processing</li>
-            <li>Write transcript & metadata back to S3</li>
+            <li>S3 PutObject event (e.g. upload to <span class="font-mono">raw/</span>)</li>
+            <li>EventBridge rule matches the new object</li>
+            <li>AWS Batch submits a job (runs on EC2)</li>
+            <li>Whisper generates subtitle segments; optional Amazon Translate for <span class="font-mono">zh-TW</span></li>
+            <li>Write <span class="font-mono">.srt</span> back to S3 and record status in DynamoDB</li>
+            <li>Move original video to <span class="font-mono">processed/</span></li>
           </ol>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UCD Sport Auto Booker -->
+  <section id="ucd-sport-booker" class="mb-14">
+    <div class="text-2xl font-bold">UCD Sport Auto Booker</div>
+    <p class="mt-2">
+      A scheduled automation that searches for sports slots and adds the best available option to the basket — with email notification.
+    </p>
+
+    <div class="mt-5 p-6 rounded-xl bg-base-200">
+      <div class="font-semibold">Demo (simulated)</div>
+      <div class="mt-3 grid gap-3">
+        <input id="sbDate" type="date" class="input input-bordered w-full" />
+
+        <div class="flex flex-wrap items-center gap-3">
+          <button id="sbRun" class="btn btn-primary btn-sm">Run booking attempt</button>
+          <div class="text-sm opacity-80">Simulates searching preferred courts and adding to basket.</div>
+        </div>
+
+        <progress id="sbProgress" class="progress w-full" value="0" max="100"></progress>
+
+        <div id="sbOutput" class="hidden">
+          <div class="divider"></div>
+          <div class="font-semibold">Result</div>
+          <div id="sbResult" class="mt-2 bg-base-100 p-4 rounded-lg text-sm"></div>
+
+          <div class="mt-6 font-semibold">Timeline sketch</div>
+          <ol class="list-decimal ml-5 mt-2 text-sm space-y-1">
+            <li>EventBridge Scheduler warmup (reduce cold start risk)</li>
+            <li>Prepare run ~1 minute early → wait until HH:00 / HH:30</li>
+            <li>Lambda logs in and tries preferred courts/time slots with retries</li>
+            <li>DynamoDB marks the date as booked (idempotency + multi-user coordination)</li>
+            <li>Send email notification with basket link / booking details</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UCD Learning (placeholder) -->
+  <section id="ucd-learning" class="mb-14">
+    <div class="text-2xl font-bold">UCD Learning Demos</div>
+    <p class="mt-2">
+      This section will gradually collect small demos for my UCD MSc modules. For now, the structure is set — content will be added module by module.
+    </p>
+    <div class="mt-5 p-6 rounded-xl bg-base-200">
+      <div class="font-semibold">Where to start</div>
+      <div class="mt-3 text-sm opacity-90">
+        Visit <a class="text-blue-600 underline" href="/learning">/learning</a> to see module pages and study notes.
       </div>
     </div>
   </section>
@@ -194,7 +248,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     const vtOutput = document.getElementById('vtOutput');
     const vtTranscript = document.getElementById('vtTranscript');
 
-    const sampleTranscript = `Hello everyone. In this short demo, I'm going to walk through the architecture of an event-driven video transcription pipeline on AWS.\n\nStep one: upload an MP4 to S3. Step two: a Lambda function validates the object and starts a Step Functions workflow. Step three: Amazon Transcribe generates the transcript, which we store back to S3 for search, summarization, or subtitle generation.`;
+    const sampleTranscript = `Hello everyone. In this short demo, I'm going to walk through an event-driven subtitle pipeline on AWS.\n\nStep one: upload an MP4 to S3 under the raw/ prefix. Step two: EventBridge detects the new object and submits an AWS Batch job. Step three: the Batch job runs Whisper to generate subtitle segments, optionally translates them, and uploads an SRT file back to S3. Finally, the raw video is moved to processed/ and the status is recorded for idempotency.`;
 
     vtFile?.addEventListener('change', () => {
       const f = vtFile.files && vtFile.files[0];
@@ -272,6 +326,48 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     const ragOutput = document.getElementById('ragOutput');
     ragRun?.addEventListener('click', () => {
       ragOutput.classList.remove('hidden');
+    });
+
+    // Sport Booker (simulated)
+    const sbDate = document.getElementById('sbDate');
+    const sbRun = document.getElementById('sbRun');
+    const sbProgress = document.getElementById('sbProgress');
+    const sbOutput = document.getElementById('sbOutput');
+    const sbResult = document.getElementById('sbResult');
+
+    // Default: 3 weeks ahead (common booking window)
+    if (sbDate) {
+      const d = new Date();
+      d.setDate(d.getDate() + 21);
+      sbDate.value = d.toISOString().slice(0, 10);
+    }
+
+    sbRun?.addEventListener('click', () => {
+      if (!sbProgress || !sbOutput || !sbResult) return;
+      const date = (sbDate && sbDate.value) ? sbDate.value : '(date not set)';
+      sbProgress.value = 0;
+      sbOutput.classList.add('hidden');
+      sbResult.textContent = '';
+
+      const steps = [18, 42, 68, 88, 100];
+      steps.forEach((v, i) => {
+        setTimeout(() => {
+          sbProgress.value = v;
+          if (v === 100) {
+            sbResult.innerHTML = `
+              <div><strong>Date:</strong> <span class="font-mono">${date}</span></div>
+              <div class="mt-2"><strong>Attempted slots (sample):</strong></div>
+              <ul class="list-disc ml-5 mt-1">
+                <li>09:00 — Court 3 — unavailable</li>
+                <li>09:00 — Court 2 — unavailable</li>
+                <li>10:00 — Court 3 — <strong>added to basket ✅</strong></li>
+              </ul>
+              <div class="mt-3">Notification: <strong>email sent</strong> and DynamoDB state updated.</div>
+            `;
+            sbOutput.classList.remove('hidden');
+          }
+        }, 350 * (i + 1));
+      });
     });
   </script>
 </BaseLayout>
