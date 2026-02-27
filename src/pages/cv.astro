@@ -16,9 +16,12 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
       Previously a <strong>Cloud Support Engineer II</strong> at <strong>AWS</strong> (CloudFront SME) supporting global enterprise customers.
     </p>
     <p class="mt-4">
+      I’m currently enrolled in a <strong>part-time MSc (Negotiated Learning)</strong> at <strong>University College Dublin</strong> (from <strong>Sep 2025</strong>), and I’m turning each module into published notes + small demos on this site.
+    </p>
+    <p class="mt-4">
       I build practical products and tools:
       a civic-tech parking violation reporting app that processed <strong>440,000+</strong> citizen reports, a RAG-based troubleshooting assistant over my technical knowledge base,
-      and newer prototypes like <strong>VideoTranslate</strong> (S3 → transcript pipeline) and <strong>ArgumentLab</strong> (YouTube → vector DB → argument exploration).
+      and newer prototypes like <strong>VideoTranslate</strong> (S3 → AWS Batch + Whisper subtitles) and <strong>ArgumentLab</strong> (YouTube → vector DB → argument exploration).
     </p>
     <p class="mt-4">
       Verified certifications: <a href="https://www.credly.com/users/cmai" target="_blank" class="text-blue-600 underline font-medium hover:text-blue-800">Credly profile</a>.
@@ -43,6 +46,19 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
   </div>
 
   <div class="time-line-container grid gap-4 mb-10">
+    <TimeLineElement
+      title="MSc in Computer Science (Negotiated Learning) — Part-time"
+      subtitle="Sep 2025 to Aug 2027 (in progress) — University College Dublin, Ireland"
+    >
+      <ul class="list-disc ml-5 text-sm space-y-1">
+        <li>2-year part-time programme focused on AI + practical systems building</li>
+        <li>Publishing notes and lightweight demos for each module on this website</li>
+      </ul>
+      <div class="mt-2 text-sm">
+        👉 <a href="/learning" class="text-blue-600 underline">Learning log & demos</a>
+      </div>
+    </TimeLineElement>
+
     <TimeLineElement
       title="Graduate Certificate in Artificial Intelligence (Certificate Only)"
       subtitle="Sep 2025 to Jan 2026 — University of Limerick, Ireland"
@@ -176,7 +192,8 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
 
   <ul class="list-disc ml-6 mb-10 space-y-2">
     <li><a class="text-blue-600 underline" href="/projects/vouchgether">Vouchgether</a> — voucher-sharing product in Ireland (WhatsApp + web + AWS serverless + Stripe)</li>
-    <li><a class="text-blue-600 underline" href="/projects/videotranslate">VideoTranslate</a> — S3 upload triggers a transcript pipeline (AWS Transcribe)</li>
+    <li><a class="text-blue-600 underline" href="/projects/videotranslate">VideoTranslate</a> — S3 upload triggers AWS Batch to generate Whisper subtitles (and optional translation)</li>
+    <li><a class="text-blue-600 underline" href="/projects/ucd-sport-auto-booker">UCD Sport Auto Booker</a> — EventBridge Scheduler + Lambda to auto-book sports slots and notify by email</li>
     <li><a class="text-blue-600 underline" href="/projects/argumentlab">ArgumentLab</a> — YouTube → vector DB → interactive argument exploration</li>
     <li><a class="text-blue-600 underline" href="/projects/rag-troubleshooting-gpt-assistant">RAG Troubleshooting Assistant</a> — semantic search + incident investigation copilot</li>
     <li><a class="text-blue-600 underline" href="/projects/parking-violation-reporter">Parking Violation Reporter</a> — 440k+ reports in ~11 months</li>

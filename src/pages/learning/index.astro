@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HorizontalCard from "../../components/HorizontalCard.astro";
+import { getCollection } from "astro:content";
+import createSlug from "../../lib/createSlug";
+
+const learning = (await getCollection("learning")).sort(
+  (a, b) => b.data.updatedDate.valueOf() - a.data.updatedDate.valueOf(),
+);
+---
+
+<BaseLayout title="Learning" sideBarActiveItemID="learning">
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Learning</div>
+    <div class="opacity-80 mt-2">
+      A structured growth log: course notes, experiments, and small demos. The goal is not to look perfect — it’s to make progress visible over time.
+    </div>
+  </div>
+
+  {
+    learning.length === 0 ? (
+      <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">
+        <p class="font-bold">No learning pages yet</p>
+        <p>I’ll be adding modules and demos as I go.</p>
+      </div>
+    ) : (
+      <ul>
+        {learning.map((p) => (
+          <>
+            <HorizontalCard
+              title={p.data.title}
+              img={p.data.heroImage}
+              desc={p.data.description}
+              url={"/learning/" + createSlug(p.data.title, p.slug)}
+              target="_self"
+              badge={p.data.badge}
+            />
+            <div class="divider my-0" />
+          </>
+        ))}
+      </ul>
+    )
+  }
+
+  <div class="mt-10">
+    <div class="text-2xl font-bold">Want hands-on demos?</div>
+    <div class="mt-2">
+      Some modules will link to small prototypes on the <a class="text-blue-600 underline" href="/lab">Lab</a> page.
+    </div>
+  </div>
+</BaseLayout>

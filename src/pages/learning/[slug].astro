@@ -1,0 +1,43 @@
+---
+import { CollectionEntry, getCollection } from "astro:content";
+import { LearningSchema } from "../../content/config";
+import LearningLayout from "../../layouts/LearningLayout.astro";
+import createSlug from "../../lib/createSlug";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("learning");
+  return entries.map((entry) => ({
+    params: { slug: createSlug(entry.data.title, entry.slug) },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"learning">;
+}
+
+const { entry } = Astro.props;
+const item: LearningSchema = entry.data;
+const { Content } = await entry.render();
+---
+
+<LearningLayout
+  title={item.title}
+  description={item.description}
+  pubDate={item.pubDate}
+  updatedDate={item.updatedDate}
+  heroImage={item.heroImage}
+  badge={item.badge}
+  url={item.url}
+  repo={item.repo}
+  demo={item.demo}
+  tech={item.tech}
+  highlights={item.highlights}
+  metrics={item.metrics}
+  tags={item.tags}
+  provider={item.provider}
+  period={item.period}
+  status={item.status}
+>
+  <Content />
+</LearningLayout>

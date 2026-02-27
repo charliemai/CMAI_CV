@@ -12,16 +12,18 @@ const last_posts = posts.slice(0, 3);
   <div class="pb-12 mt-5">
     <div class="text-xl py-1">Welcome!</div>
     <div class="text-5xl font-bold">I'm YUNG-CHI(Charlie) MAI</div>
-    <div class="text-3xl py-3 font-bold">DevOps Support Engineer | Ex-AWS Cloud Support Engineer II | Cloud & AI Tooling Builder</div>
+    <div class="text-3xl py-3 font-bold">DevOps Support Engineer | Ex-AWS Cloud Support Engineer II | Cloud & AI Tooling Builder | UCD MSc (Negotiated Learning)</div>
     <div class="py-2">
       <p class="text-lg">
         This website is my <strong>living portfolio</strong> and growth log.
         I document what I build across cloud infrastructure, DevOps automation, mobile apps, and AI tools — including lightweight demos and architecture notes.
         I have 15+ years of hands-on experience, and I’m currently working in Ireland supporting mission-critical systems.
+        I’m also studying a <strong>part-time MSc at University College Dublin</strong> and publishing module notes + demos in the <a class="text-blue-600 underline" href="/learning">Learning</a> section.
       </p>
     </div>
     <div class="mt-8">
       <a href="/projects" class="btn btn-primary">Explore Projects</a>
+      <a href="/learning" class="btn btn-outline ml-3">Learning Log</a>
       <a href="/cv" class="btn btn-outline ml-3">View CV</a>
       <a href="https://lkk.dev" target="_blank" class="btn btn-outline ml-3">Vouchgether</a>
     </div>
@@ -34,10 +36,20 @@ const last_posts = posts.slice(0, 3);
   <HorizontalCard
       title="VideoTranslate"
       img="/project_videotranslate.png"
-      desc="Upload an MP4/MOV to S3 and an AWS serverless pipeline automatically generates transcripts (foundation for subtitles/translation)."
+      desc="Upload an MP4/MOV to S3 and EventBridge triggers AWS Batch to generate Whisper subtitles (with optional translation)."
       url="/projects/videotranslate"
       target="_self"
       badge="Prototype"
+  />
+  <div class="divider my-0"></div>
+
+  <HorizontalCard
+      title="UCD Sport Auto Booker"
+      img="/project_ucd_sport_booker.png"
+      desc="A scheduled automation that logs into a booking site, secures sports slots, and sends email notifications — built with EventBridge Scheduler + Lambda + DynamoDB."
+      url="/projects/ucd-sport-auto-booker"
+      target="_self"
+      badge="Automation"
   />
   <div class="divider my-0"></div>
 
