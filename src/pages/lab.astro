@@ -1,0 +1,277 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Lab" sideBarActiveItemID="lab">
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Lab</div>
+    <div class="opacity-80 mt-2">
+      Lightweight demos & UI prototypes. These are intentionally minimal and may run as simulations (no backend required) — the goal is to document ideas, architectures, and product thinking.
+    </div>
+  </div>
+
+  <!-- VideoTranslate -->
+  <section id="videotranslate" class="mb-14">
+    <div class="text-2xl font-bold">VideoTranslate</div>
+    <p class="mt-2">
+      Upload a video to S3 → trigger an AWS pipeline → generate transcripts (and optionally subtitles/translation).
+    </p>
+
+    <div class="mt-5 p-6 rounded-xl bg-base-200">
+      <div class="font-semibold">Demo (simulated)</div>
+      <div class="mt-3 grid gap-3">
+        <input id="vtFile" type="file" class="file-input file-input-bordered w-full" accept="video/mp4,video/quicktime" />
+        <div class="flex flex-wrap items-center gap-3">
+          <button id="vtRun" class="btn btn-primary btn-sm">Run pipeline</button>
+          <div class="text-sm opacity-80">
+            Selected file: <span id="vtFileName" class="font-mono">(none)</span>
+          </div>
+        </div>
+
+        <progress id="vtProgress" class="progress w-full" value="0" max="100"></progress>
+
+        <div id="vtOutput" class="hidden">
+          <div class="divider"></div>
+          <div class="font-semibold">Transcript (excerpt)</div>
+          <pre class="mt-2 whitespace-pre-wrap bg-base-100 p-4 rounded-lg text-sm"><code id="vtTranscript"></code></pre>
+
+          <div class="mt-5 font-semibold">Generated artifacts</div>
+          <ul class="list-disc ml-5 mt-2 text-sm space-y-1">
+            <li><span class="font-mono">s3://videotranslate-output/.../transcript.json</span></li>
+            <li><span class="font-mono">s3://videotranslate-output/.../transcript.txt</span></li>
+            <li><span class="font-mono">s3://videotranslate-output/.../subtitles.srt</span> (optional)</li>
+          </ul>
+
+          <div class="mt-5 font-semibold">Pipeline sketch</div>
+          <ol class="list-decimal ml-5 mt-2 text-sm space-y-1">
+            <li>S3 PutObject event</li>
+            <li>Lambda: validate + create job metadata</li>
+            <li>Step Functions: orchestrate Transcribe + post-processing</li>
+            <li>Write transcript & metadata back to S3</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ArgumentLab -->
+  <section id="argumentlab" class="mb-14">
+    <div class="text-2xl font-bold">ArgumentLab</div>
+    <p class="mt-2">
+      A YouTube → Vector DB → Chat UI experiment for exploring political ideas. It summarizes content, extracts claims/counterpoints, and builds a personal reasoning trace.
+    </p>
+
+    <div class="mt-5 p-6 rounded-xl bg-base-200">
+      <div class="font-semibold">Demo (simulated)</div>
+      <div class="mt-3 grid gap-3">
+        <input
+          id="alUrl"
+          type="text"
+          placeholder="Paste a YouTube URL…"
+          class="input input-bordered w-full"
+        />
+        <div class="flex flex-wrap items-center gap-3">
+          <button id="alRun" class="btn btn-primary btn-sm">Analyze</button>
+          <div class="text-sm opacity-80">This demo returns a sample output.</div>
+        </div>
+
+        <div id="alOutput" class="hidden">
+          <div class="divider"></div>
+
+          <div class="font-semibold">Summary</div>
+          <div id="alSummary" class="mt-2 bg-base-100 p-4 rounded-lg text-sm"></div>
+
+          <div class="mt-6 font-semibold">Extracted claims</div>
+          <ul id="alClaims" class="list-disc ml-5 mt-2 text-sm space-y-1"></ul>
+
+          <div class="mt-6 font-semibold">Counterpoints / missing context</div>
+          <ul id="alCounters" class="list-disc ml-5 mt-2 text-sm space-y-1"></ul>
+
+          <div class="mt-6 font-semibold">My reasoning trace (example)</div>
+          <div class="mt-2 bg-base-100 p-4 rounded-lg text-sm">
+            <p class="mb-2">A structured record that I can revisit later:</p>
+            <ol class="list-decimal ml-5 space-y-1">
+              <li><strong>Initial stance:</strong> skeptical</li>
+              <li><strong>Evidence that changed my mind:</strong> data point X</li>
+              <li><strong>Remaining uncertainty:</strong> assumptions Y and Z</li>
+              <li><strong>What I want to research next:</strong> policy comparison A vs B</li>
+            </ol>
+          </div>
+
+          <div class="mt-6 font-semibold">Pipeline sketch</div>
+          <ol class="list-decimal ml-5 mt-2 text-sm space-y-1">
+            <li>Fetch transcript + metadata</li>
+            <li>Summarize + extract claims</li>
+            <li>Embed + store into vector DB</li>
+            <li>Chat UI for retrieval + comparison</li>
+            <li>Persist personal stance timeline</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RAG Troubleshooting -->
+  <section id="rag-troubleshooting" class="mb-14">
+    <div class="text-2xl font-bold">RAG Troubleshooting (prototype)</div>
+    <p class="mt-2">
+      A simplified UI mock for my RAG troubleshooting assistant. The real version is hosted externally; this is just a lightweight snapshot.
+    </p>
+
+    <div class="mt-5 p-6 rounded-xl bg-base-200">
+      <div class="font-semibold">Demo (simulated)</div>
+      <div class="mt-3 grid gap-3">
+        <input
+          id="ragQuery"
+          type="text"
+          placeholder="Ask something like: 'CloudFront returns 403 only for one path – what should I check?'"
+          class="input input-bordered w-full"
+        />
+        <div class="flex flex-wrap items-center gap-3">
+          <button id="ragRun" class="btn btn-primary btn-sm">Search</button>
+          <a class="btn btn-outline btn-sm" href="https://troubleshooting-system.onrender.com/" target="_blank">Open hosted demo</a>
+        </div>
+
+        <div id="ragOutput" class="hidden">
+          <div class="divider"></div>
+          <div class="font-semibold">Retrieved context (sample)</div>
+          <ul class="list-disc ml-5 mt-2 text-sm space-y-2">
+            <li><strong>CloudFront + S3 OAC/OAI checklist:</strong> verify bucket policy, origin access identity, and cached 403 responses.</li>
+            <li><strong>WAF/Geo restrictions:</strong> check if path matches a rule or if country-based blocks apply.</li>
+            <li><strong>Signed URLs/cookies:</strong> confirm URL signing behavior and clock skew.</li>
+          </ul>
+
+          <div class="mt-6 font-semibold">Answer draft (sample)</div>
+          <div class="mt-2 bg-base-100 p-4 rounded-lg text-sm">
+            Start by confirming whether the 403 is generated by CloudFront or the origin. Check CloudFront access logs for the edge result type and origin status…
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vouchgether -->
+  <section id="vouchgether" class="mb-14">
+    <div class="text-2xl font-bold">Vouchgether (walkthrough)</div>
+    <p class="mt-2">
+      A UX walkthrough of the core flows — upload, browse, claim, and subscribe.
+    </p>
+
+    <div class="mt-5 p-6 rounded-xl bg-base-200">
+      <div class="grid gap-4">
+        <div>
+          <div class="font-semibold">Core flows</div>
+          <ul class="list-disc ml-5 mt-2 text-sm space-y-1">
+            <li>WhatsApp Bot → menu → browse / upload / request / help</li>
+            <li>Web upload: OCR validate + duplicate prevention</li>
+            <li>Claim page: short-lived S3 presigned URL download</li>
+            <li>Stripe subscription: checkout + webhook-based activation</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="font-semibold">Why this matters</div>
+          <div class="mt-2 text-sm opacity-90">
+            The interesting part isn’t the UI — it’s the product rules and reliability engineering:
+            idempotency, race-condition safe claim, anti-abuse, observability, and operational runbooks.
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+          <a class="btn btn-primary btn-sm" href="https://lkk.dev" target="_blank">Open live site</a>
+          <a class="btn btn-outline btn-sm" href="/projects/vouchgether">Read the write-up</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // VideoTranslate (simulated)
+    const vtFile = document.getElementById('vtFile');
+    const vtFileName = document.getElementById('vtFileName');
+    const vtRun = document.getElementById('vtRun');
+    const vtProgress = document.getElementById('vtProgress');
+    const vtOutput = document.getElementById('vtOutput');
+    const vtTranscript = document.getElementById('vtTranscript');
+
+    const sampleTranscript = `Hello everyone. In this short demo, I'm going to walk through the architecture of an event-driven video transcription pipeline on AWS.\n\nStep one: upload an MP4 to S3. Step two: a Lambda function validates the object and starts a Step Functions workflow. Step three: Amazon Transcribe generates the transcript, which we store back to S3 for search, summarization, or subtitle generation.`;
+
+    vtFile?.addEventListener('change', () => {
+      const f = vtFile.files && vtFile.files[0];
+      vtFileName.textContent = f ? `${f.name} (${Math.round(f.size / 1024 / 1024)} MB)` : '(none)';
+    });
+
+    vtRun?.addEventListener('click', () => {
+      vtProgress.value = 0;
+      vtOutput.classList.add('hidden');
+      vtTranscript.textContent = '';
+
+      const steps = [15, 35, 55, 75, 100];
+      steps.forEach((v, i) => {
+        setTimeout(() => {
+          vtProgress.value = v;
+          if (v === 100) {
+            vtTranscript.textContent = sampleTranscript;
+            vtOutput.classList.remove('hidden');
+          }
+        }, 450 * (i + 1));
+      });
+    });
+
+    // ArgumentLab (simulated)
+    const alUrl = document.getElementById('alUrl');
+    const alRun = document.getElementById('alRun');
+    const alOutput = document.getElementById('alOutput');
+    const alSummary = document.getElementById('alSummary');
+    const alClaims = document.getElementById('alClaims');
+    const alCounters = document.getElementById('alCounters');
+
+    alRun?.addEventListener('click', () => {
+      const url = (alUrl.value || '').trim();
+      alOutput.classList.remove('hidden');
+
+      alSummary.textContent = `This video argues that policy X increases long-term productivity, but may have short-term distributional costs. It frames the debate around incentives, public trust, and measurement of outcomes. (Sample output)`;
+
+      const claims = [
+        'Claim 1: Policy X improves efficiency by reducing friction in process Y.',
+        'Claim 2: The main failure mode is not the policy itself but poor implementation.',
+        'Claim 3: Public trust is a prerequisite for compliance and success.'
+      ];
+
+      const counters = [
+        'Counterpoint: efficiency gains may be offset by reduced access for vulnerable groups.',
+        'Missing context: comparable policy outcomes in other countries/time periods.',
+        'Risk: metrics may be gamed unless incentives are designed carefully.'
+      ];
+
+      alClaims.innerHTML = '';
+      claims.forEach(c => {
+        const li = document.createElement('li');
+        li.textContent = c;
+        alClaims.appendChild(li);
+      });
+
+      alCounters.innerHTML = '';
+      counters.forEach(c => {
+        const li = document.createElement('li');
+        li.textContent = c;
+        alCounters.appendChild(li);
+      });
+
+      // Use the URL only as a "nice touch".
+      if (url) {
+        const note = document.createElement('div');
+        note.className = 'mt-3 text-xs opacity-70';
+        note.textContent = `Input: ${url}`;
+        alSummary.appendChild(note);
+      }
+    });
+
+    // RAG (simulated)
+    const ragRun = document.getElementById('ragRun');
+    const ragOutput = document.getElementById('ragOutput');
+    ragRun?.addEventListener('click', () => {
+      ragOutput.classList.remove('hidden');
+    });
+  </script>
+</BaseLayout>
