@@ -24,13 +24,39 @@ const storeSchema = z.object({
     heroImage: z.string().optional(),
 });
 
+// Projects / Tools / Products
+// A lightweight schema designed for a "living portfolio".
+const projectSchema = z.object({
+    title: z.string(),
+    description: z.string(),
+    // When this project page/content was last meaningfully updated.
+    updatedDate: z.coerce.date(),
+    // Optional: when the project started or launched.
+    pubDate: z.coerce.date().optional(),
+    heroImage: z.string().optional(),
+    badge: z.string().optional(),
+    // External links (optional)
+    url: z.string().optional(),
+    repo: z.string().optional(),
+    demo: z.string().optional(),
+    tech: z.array(z.string()).optional(),
+    highlights: z.array(z.string()).optional(),
+    metrics: z.array(z.string()).optional(),
+    tags: z.array(z.string()).refine(items => new Set(items).size === items.length, {
+        message: 'tags must be unique',
+    }).optional(),
+});
+
 export type BlogSchema = z.infer<typeof blogSchema>;
 export type StoreSchema = z.infer<typeof storeSchema>;
+export type ProjectSchema = z.infer<typeof projectSchema>;
 
 const blogCollection = defineCollection({ schema: blogSchema });
 const storeCollection = defineCollection({ schema: storeSchema });
+const projectsCollection = defineCollection({ schema: projectSchema });
 
 export const collections = {
     'blog': blogCollection,
-    'store': storeCollection
+    'store': storeCollection,
+    'projects': projectsCollection,
 }

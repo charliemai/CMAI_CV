@@ -6,6 +6,8 @@ heroImage: "/Pursue_MSc_AI.png"
 tags: ["Ireland", "AI", "Postgraduate", "Motivation"]
 ---
 
+> **Update (Feb 2026):** I completed an AI certificate at the University of Limerick (Sep 2025–Jan 2026) and decided not to continue to the full MSc for now. The rest of this post captures my mindset when I wrote it in 2025.
+
 I’ve always been passionate about building practical systems that help people—whether it’s a traffic violation reporting app that empowered civic engagement in Taiwan, or a GPT-based assistant that supports complex DevOps workflows in my current work.
 
 Over the years, I’ve led the development of tools that made real-world impact. One citizen platform I built facilitated over 440,000 traffic violation reports in just one year, helping local governments deliver faster public services. Most recently, I launched Vouchgether, a community-oriented app in Ireland that enables people to share discounts, save money, and support each other.

@@ -3,87 +3,210 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
 ---
 
-<BaseLayout title="Resume" sideBarActiveItemID="cv">
+<BaseLayout title="CV" sideBarActiveItemID="cv">
+  <!-- Profile -->
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Profile</div>
   </div>
 
-  <div class="mb-10 text-justify">
-    Experienced IT professional with over 15 years across cloud infrastructure, mobile development, and AI tooling.
-    Currently working as a DevOps Support Engineer at National Broadband Ireland.
-    Passionate about building impactful tools—such as a citizen parking violation app with over 440,000 reports and a GPT-based AI agent with semantic search capabilities.
-    You can find my verified certifications on
-    <a href="https://www.credly.com/users/cmai" target="_blank" class="text-blue-600 underline font-medium hover:text-blue-800">
-      my Credly profile
-    </a>.
+  <div class="mb-6 text-justify">
+    <p>
+      IT professional with <strong>16 years</strong> of experience across cloud infrastructure, DevOps operations, backend development, mobile apps, and AI-driven automation.
+      Currently working as an <strong>IT DevOps Support Engineer</strong> at <strong>National Broadband Ireland</strong>.
+      Previously a <strong>Cloud Support Engineer II</strong> at <strong>AWS</strong> (CloudFront SME) supporting global enterprise customers.
+    </p>
+    <p class="mt-4">
+      I build practical products and tools:
+      a civic-tech parking violation reporting app that processed <strong>440,000+</strong> citizen reports, a RAG-based troubleshooting assistant over my technical knowledge base,
+      and newer prototypes like <strong>VideoTranslate</strong> (S3 → transcript pipeline) and <strong>ArgumentLab</strong> (YouTube → vector DB → argument exploration).
+    </p>
+    <p class="mt-4">
+      Verified certifications: <a href="https://www.credly.com/users/cmai" target="_blank" class="text-blue-600 underline font-medium hover:text-blue-800">Credly profile</a>.
+    </p>
   </div>
 
+  <!-- Highlights -->
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Highlights</div>
+  </div>
+
+  <ul class="list-disc ml-6 mb-10 space-y-2">
+    <li><strong>AWS support performance:</strong> Top 1 Customer Satisfaction (135 high ratings/year) & Top 2 Case Performance (457 resolves/year)</li>
+    <li><strong>CloudFront SME:</strong> specialized in CDN delivery, caching, TLS, WAF/security, and media streaming workflows</li>
+    <li><strong>Product impact:</strong> 440,000+ civic reports via a self-built mobile app in Taiwan (11 months)</li>
+    <li><strong>Builder mindset:</strong> 10+ frontend/backend apps, automation scripts, and internal tools for debugging & operational efficiency</li>
+  </ul>
+
+  <!-- Education -->
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Education</div>
   </div>
 
   <div class="time-line-container grid gap-4 mb-10">
     <TimeLineElement
-        title="Master of Information Technology"
-        subtitle="2007 to 2008 at Queensland University of Technology, Brisbane, Australia"
+      title="Graduate Certificate in Artificial Intelligence (Certificate Only)"
+      subtitle="Sep 2025 to Jan 2026 — University of Limerick, Ireland"
     >
-      GPA: 6.5 / 7.0 – Dean's List Honoree<br />
-      1. Scholarship for Excellent Academic Performance in Semester 1<br />
-      2. Dean's List with scholarship in Semester 2<br />
-      3. CEED SCHOLARSHIP at CEED PROGRAM in Semester 3<br />
-      👉 <a href="http://www.corptech.com.au/" class="text-blue-600 underline" target="_blank">corptech.com.au (CEED Program was closed due to Covid)</a>
+      Completed the certificate programme (did not continue to the full MSc).
     </TimeLineElement>
 
     <TimeLineElement
-        title="Bachelor of Civil Engineering"
-        subtitle="2003 to 2006 at National Chiao Tung University, Hsinchu, Taiwan"
+      title="Master of Information Technology"
+      subtitle="2007 to 2008 — Queensland University of Technology, Brisbane, Australia"
+    >
+      <ul class="list-disc ml-5 text-sm space-y-1">
+        <li>GPA: 6.5 / 7.0 — Dean's List Honoree</li>
+        <li>Scholarship for Excellent Academic Performance (Semester 1)</li>
+        <li>Dean's List scholarship (Semester 2)</li>
+        <li>CEED Scholarship (Semester 3)</li>
+      </ul>
+      <div class="mt-2 text-sm">
+        👉 <a href="http://www.corptech.com.au/" class="text-blue-600 underline" target="_blank">corptech.com.au</a>
+      </div>
+    </TimeLineElement>
+
+    <TimeLineElement
+      title="Bachelor of Civil Engineering"
+      subtitle="2003 to 2006 — National Chiao Tung University, Hsinchu, Taiwan"
     />
   </div>
 
+  <!-- Experience -->
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Experience</div>
   </div>
 
   <div class="time-line-container mb-10">
     <TimeLineElement
-        title="IT DevOps Support Engineer at National Broadband Ireland"
-        subtitle="From Feb 2025 to Present in Dublin, Ireland"
+      title="IT DevOps Support Engineer — National Broadband Ireland"
+      subtitle="Feb 2025 to Present — Dublin, Ireland"
     >
-      Supporting backend services, deployment pipelines, cloud debugging, and assisting junior developers on infrastructure tasks.
+      <ul class="list-disc ml-5 text-sm space-y-1">
+        <li>Support AWS serverless and COTS products; investigate production issues and integrations</li>
+        <li>Build/execute automated operational processes; deploy updates and fixes</li>
+        <li>Provide Level 2 technical support and root-cause analysis for complex incidents</li>
+        <li>Develop scripts/tools to reduce recurring errors and improve customer experience</li>
+        <li>Assist and mentor junior developers on infrastructure and debugging workflows</li>
+      </ul>
     </TimeLineElement>
+
     <TimeLineElement
-        title="Business Programme Manager at VIVERSE"
-        subtitle="From Apr 2024 to Feb 2025 in Dublin, Ireland"
+      title="Business Programme Manager — VIVERSE"
+      subtitle="Apr 2024 to Feb 2025 — Dublin, Ireland"
     >
-      Delivered enterprise metaverse projects across the EMEA region, led multi-team project delivery, and acted as technical lead for stakeholder coordination.
+      <ul class="list-disc ml-5 text-sm space-y-1">
+        <li>Delivered enterprise metaverse projects across EMEA; led multi-team execution</li>
+        <li>Managed 15+ stakeholders and parallel customer technical discussions</li>
+        <li>Defined project charters, aligned scope/requirements with R&D and engineering teams</li>
+        <li>Acted as technical interface for product launches and customer coordination</li>
+      </ul>
     </TimeLineElement>
+
     <TimeLineElement
-        title="Cloud Support Engineer II at AWS"
-        subtitle="From Jan 2022 to Mar 2024 in Dublin, Ireland"
+      title="Cloud Support Engineer II (CloudFront SME) — Amazon Web Services"
+      subtitle="Jan 2022 to Mar 2024 — Dublin, Ireland"
     >
-      Specialised in Amazon CloudFront. Awarded <strong>Top 1 Customer Satisfaction</strong> and <strong>Top 2 Case Performance</strong> among AWS support teams. Mentored engineers and contributed internal documentation and service training.
+      <ul class="list-disc ml-5 text-sm space-y-1">
+        <li>Specialized in Amazon CloudFront and the broader CDN + security + streaming ecosystem</li>
+        <li>Awarded <strong>Top 1 Customer Satisfaction</strong> and <strong>Top 2 Case Performance</strong> in support org</li>
+        <li>Handled critical, cross-service issues (CloudFront, S3, WAF, IAM, API Gateway, Media services)</li>
+        <li>Mentored engineers, delivered internal training, and contributed domain documentation</li>
+      </ul>
     </TimeLineElement>
+
     <TimeLineElement
-        title="Solutions Engineer at Verizon Media"
-        subtitle="From Apr 2019 to Aug 2021 in Taiwan"
+      title="Solutions Engineer / Delivery Customer Support Engineer — Verizon Media Platform"
+      subtitle="Apr 2019 to Aug 2021 — Taiwan"
     >
-      Delivered CDN solutions to global clients. Managed incidents, log analysis, and performance tuning.<br />
-      Recognized with <strong>Multi Player Award</strong> in 2021 across the Solution Engineering/Technical Account/Sales teams.<br />
-      Participated in the cross-regional rollout of video CDN services and supported major global media clients.
+      <ul class="list-disc ml-5 text-sm space-y-1">
+        <li>Delivered CDN solutions to global clients; incident management, log analysis, performance tuning</li>
+        <li>Recognized with <strong>Multi Player Award</strong> (2021) across Solution Engineering / Technical Account / Sales</li>
+        <li>Supported cross-regional rollout of video CDN services for major media clients</li>
+      </ul>
+    </TimeLineElement>
+
+    <TimeLineElement
+      title="Technical Lead — CATCHPLAY"
+      subtitle="May 2017 to Apr 2019 — Taiwan & Indonesia"
+    >
+      <ul class="list-disc ml-5 text-sm space-y-1">
+        <li>Led Android TV / STB app development and partner integrations across regions</li>
+        <li>Built CI mechanisms for frontend teams and improved release quality</li>
+        <li>Bridged domain know-how across Android / iOS / Web platforms</li>
+      </ul>
+    </TimeLineElement>
+
+    <TimeLineElement
+      title="Team Lead, Mobile — Nogle Taiwan"
+      subtitle="Jul 2015 to Apr 2017 — Taiwan"
+    >
+      <ul class="list-disc ml-5 text-sm space-y-1">
+        <li>Native Android and iOS development; built CI pipelines for mobile apps</li>
+        <li>Led internal study group for Swift; explored mobile payment solutions</li>
+      </ul>
+    </TimeLineElement>
+
+    <TimeLineElement
+      title="IT Lead — TaiwanYo"
+      subtitle="Oct 2010 to Jun 2014 — Taiwan"
+    >
+      <ul class="list-disc ml-5 text-sm space-y-1">
+        <li>IT team leadership, architecture improvement, cross-department coordination</li>
+        <li>Developed Android app and researched/introduced new technologies</li>
+      </ul>
+    </TimeLineElement>
+
+    <TimeLineElement
+      title="Earlier career"
+      subtitle="2009 to 2014 — Taiwan"
+    >
+      <ul class="list-disc ml-5 text-sm space-y-1">
+        <li>IT Specialist — Payeasy (SCM/CRM portals, batch jobs, SSIS)</li>
+        <li>Assistant Lead — Gorilla Technology (surveillance solution & service)</li>
+        <li>Staff Engineer — Vpon (mobile ad platform project management)</li>
+        <li>IT Specialist — TDCC (project management for e-Report system)</li>
+      </ul>
     </TimeLineElement>
   </div>
 
+  <!-- Selected Projects -->
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Awards</div>
+    <div class="text-3xl w-full font-bold">Selected Projects</div>
   </div>
 
-  <div class="mb-10">
-    <strong>U-START Social Enterprise Competition – Silver Medal (2017)</strong><br />
-    Our project “In your life” introduced a “single violation reporting” platform integrating social welfare systems.
-    👉 <a class="text-blue-600 underline" target="_blank" href="https://www.edu.tw/News_Content.aspx?n=9E7AC85F1954DDA8&s=6B16ED571B6D04D8">Media Link 1</a> |
-    <a class="text-blue-600 underline" target="_blank" href="https://www.chinatimes.com/campus/20170902001946-262301?chdtv">Media Link 2</a>
+  <ul class="list-disc ml-6 mb-10 space-y-2">
+    <li><a class="text-blue-600 underline" href="/projects/vouchgether">Vouchgether</a> — voucher-sharing product in Ireland (WhatsApp + web + AWS serverless + Stripe)</li>
+    <li><a class="text-blue-600 underline" href="/projects/videotranslate">VideoTranslate</a> — S3 upload triggers a transcript pipeline (AWS Transcribe)</li>
+    <li><a class="text-blue-600 underline" href="/projects/argumentlab">ArgumentLab</a> — YouTube → vector DB → interactive argument exploration</li>
+    <li><a class="text-blue-600 underline" href="/projects/rag-troubleshooting-gpt-assistant">RAG Troubleshooting Assistant</a> — semantic search + incident investigation copilot</li>
+    <li><a class="text-blue-600 underline" href="/projects/parking-violation-reporter">Parking Violation Reporter</a> — 440k+ reports in ~11 months</li>
+  </ul>
+
+  <!-- Awards / Recognition -->
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Awards & Recognition</div>
   </div>
 
+  <div class="mb-10 space-y-4">
+    <div>
+      <strong>U-START Social Enterprise Competition — Silver Medal (2017)</strong><br />
+      Our project “In your life” introduced a “single violation reporting” platform integrating social welfare systems.
+      👉 <a class="text-blue-600 underline" target="_blank" href="https://www.edu.tw/News_Content.aspx?n=9E7AC85F1954DDA8&s=6B16ED571B6D04D8">Media Link 1</a> |
+      <a class="text-blue-600 underline" target="_blank" href="https://www.chinatimes.com/campus/20170902001946-262301?chdtv">Media Link 2</a>
+    </div>
+
+    <div>
+      <strong>Verizon Media — Multi Player Award (2021)</strong><br />
+      Cross-team recognition across Solution Engineering / Technical Account / Sales.
+    </div>
+
+    <div>
+      <strong>AWS — Support performance recognition</strong><br />
+      Top 1 customer satisfaction and Top 2 case performance within the support org.
+    </div>
+  </div>
+
+  <!-- Certifications -->
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Certifications</div>
   </div>
@@ -101,11 +224,30 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
     <li>Sun Certified Java Programmer / Web Component Developer</li>
   </ol>
 
+  <!-- Skills -->
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Skills (Categorized)</div>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mx-4 mb-12">
+    <div>
+      <h4 class="font-semibold mb-2">Cloud & Serverless</h4>
+      <ul class="list-disc ml-5 text-sm space-y-1">
+        <li>AWS: CloudFront, S3, Lambda, API Gateway, IAM, Route 53, WAF, KMS</li>
+        <li>Event-driven workflows, presigned URLs, webhook idempotency</li>
+        <li>Monitoring/alerts, operational runbooks, production incident handling</li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="font-semibold mb-2">AI / LLM Systems</h4>
+      <ul class="list-disc ml-5 text-sm space-y-1">
+        <li>RAG (retrieval-augmented generation), embeddings, chunking strategies</li>
+        <li>Vector databases (e.g., Pinecone) and semantic search</li>
+        <li>LLM app design: prompt patterns, evaluation mindset, UX for reasoning</li>
+      </ul>
+    </div>
+
     <div>
       <h4 class="font-semibold mb-2">CDN / Networking</h4>
       <ul class="list-disc ml-5 text-sm space-y-1">
@@ -121,35 +263,39 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
     <div>
       <h4 class="font-semibold mb-2">Backend</h4>
       <ul class="list-disc ml-5 text-sm space-y-1">
-        <li>Node.js, FastAPI, Python</li>
-        <li>J2EE (EJB, JSP, Spring Framework, etc.)</li>
+        <li>Python (FastAPI), Node.js</li>
+        <li>Java / J2EE (EJB, JSP, Spring Framework)</li>
         <li>Application Servers: Resin, Tomcat, Weblogic, WebSphere</li>
+        <li>Databases: Oracle, MySQL, MongoDB, PostgreSQL</li>
       </ul>
     </div>
 
     <div>
-      <h4 class="font-semibold mb-2">Mobile (Android / iOS)</h4>
+      <h4 class="font-semibold mb-2">Mobile</h4>
       <ul class="list-disc ml-5 text-sm space-y-1">
-        <li>Android Certified Dev/Engineer –
-          <a href="https://www.androidatc.com/" class="text-blue-600 underline" target="_blank">Android ATC</a>
-        </li>
-        <li>
-          Published apps:
-          <a href="https://taiwanbetter.weebly.com/?fbclid=IwY2xjawKseiZleHRuA2FlbQIxMQBicmlkETBQZWpGOWdZT1B0alphRzUwAR6BwzH9pq38sMXM7wUitgLerK5Eq-i1EvhFJisYBcRryoZXAEhyxD2Iw7EeXw_aem_FwwvcyoKXw3HoOpKnzFa3A" class="underline text-blue-600" target="_blank">TaiwanBetter</a>,
-          <a href="https://lkk.dev" class="underline text-blue-600" target="_blank">Vouchgether</a>
-        </li>
+        <li>Android / iOS development, CI for mobile apps</li>
+        <li>Published apps: TaiwanBetter, Vouchgether</li>
         <li>Media coverage: Briian / Apple Daily / Cool3c / Jay.com</li>
       </ul>
     </div>
 
     <div>
-      <h4 class="font-semibold mb-2">Others</h4>
+      <h4 class="font-semibold mb-2">DevOps / Systems</h4>
       <ul class="list-disc ml-5 text-sm space-y-1">
-        <li>AWS (EC2, S3, Lambda, RDS, IAM), Google Cloud</li>
-        <li>Linux / Mac / Nginx / HaProxy</li>
-        <li>Databases: Oracle, MySQL, MongoDB, PostgreSQL</li>
-        <li>RESTful APIs, Firebase, Parse, Fabric</li>
+        <li>Linux / macOS</li>
+        <li>Nginx / HAProxy</li>
+        <li>CI/CD pipelines, automation scripts, reliability mindset</li>
       </ul>
     </div>
   </div>
+
+  <!-- Languages -->
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Languages</div>
+  </div>
+
+  <ul class="list-disc ml-6 mb-10 space-y-1">
+    <li>Mandarin — Native / Bilingual</li>
+    <li>English — Professional working proficiency</li>
+  </ul>
 </BaseLayout>
