@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Parking Violation Reporter project illustration</title>
+  <desc id="desc">A civic technology illustration showing a map, reports, and a public impact counter.</desc>
+  <rect width="960" height="540" fill="#15343d"/>
+  <path d="M0 120L960 60M0 230L960 170M0 340L960 280M0 450L960 390M160 0L80 540M360 0L280 540M560 0L480 540M760 0L680 540" stroke="#2d5f67" stroke-width="2" opacity=".6"/>
+  <text x="58" y="76" fill="#f4f6f3" font-family="Arial, sans-serif" font-size="32" font-weight="700" letter-spacing="2">PARKING REPORTER</text>
+  <text x="60" y="110" fill="#f5e4b7" font-family="monospace" font-size="15" letter-spacing="2">CIVIC TECHNOLOGY / PUBLIC IMPACT</text>
+  <path d="M84 366C178 294 230 320 306 240S450 186 518 262s106 90 174 12 112-112 180-148" fill="none" stroke="#d9efec" stroke-width="7"/>
+  <circle cx="182" cy="292" r="15" fill="#d19a32"/>
+  <circle cx="337" cy="231" r="15" fill="#d19a32"/>
+  <circle cx="522" cy="260" r="15" fill="#d19a32"/>
+  <circle cx="696" cy="274" r="15" fill="#d19a32"/>
+  <rect x="608" y="152" width="292" height="122" rx="20" fill="#f4f6f3"/>
+  <text x="644" y="194" fill="#65747a" font-family="monospace" font-size="16">REPORTS HANDLED</text>
+  <text x="640" y="245" fill="#087f82" font-family="Arial, sans-serif" font-size="48" font-weight="700">440K+</text>
+  <rect x="608" y="324" width="292" height="88" rx="18" fill="#d19a32"/>
+  <text x="642" y="360" fill="#17242b" font-family="monospace" font-size="14">U-START SOCIAL ENTERPRISE</text>
+  <text x="642" y="390" fill="#17242b" font-family="Arial, sans-serif" font-size="21" font-weight="700">SILVER MEDAL</text>
+</svg>

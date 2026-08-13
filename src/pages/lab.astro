@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { lab } from "../data/site";
+---
+
+<BaseLayout title="Lab | Charlie Mai" description="A secondary space for Charlie Mai's AI, automation, and portfolio experiments.">
+  <section class="page-intro">
+    <p class="eyebrow">Lab</p>
+    <h1>Small experiments. Clear boundaries.</h1>
+    <p>
+      The lab is where ideas are tested before they become claims. It stays deliberately smaller
+      than the main portfolio and makes uncertainty visible.
+    </p>
+  </section>
+
+  <section aria-labelledby="lab-list-title">
+    <SectionHeading
+      eyebrow="Current threads"
+      title="Questions worth prototyping."
+      intro="Each thread has a concrete question, a visible scope, and a reason it matters to engineering work."
+      id="lab-list-title"
+    />
+    <div class="lab-list">
+      {lab.map((item) => (
+        <article class="lab-item">
+          <div>
+            <span class="status">{item.status}</span>
+            <h3>{item.title}</h3>
+          </div>
+          <p>{item.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { writing } from "../data/site";
+---
+
+<BaseLayout title="Writing | Charlie Mai" description="Writing about production support, automation, AI systems, and technical portfolios.">
+  <section class="page-intro">
+    <p class="eyebrow">Writing</p>
+    <h1>Notes from the work.</h1>
+    <p>
+      Short, useful reflections on production support, automation, AI systems, and the judgement
+      behind a good technical portfolio.
+    </p>
+  </section>
+
+  <section aria-labelledby="writing-list-title">
+    <SectionHeading
+      eyebrow="Essays and notes"
+      title="A quieter layer of the portfolio."
+      intro="Writing stays secondary to the CV and project evidence, but it gives context to the decisions behind them."
+      id="writing-list-title"
+    />
+    <div class="writing-list">
+      {writing.map((post) => (
+        <article class="writing-item">
+          <time>{post.date}</time>
+          <div>
+            <span class="tag">{post.tag}</span>
+            <h3>{post.title}</h3>
+            <p>{post.summary}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

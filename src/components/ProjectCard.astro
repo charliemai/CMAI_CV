@@ -1,0 +1,38 @@
+---
+import type { ProjectEntry } from "../data/site";
+
+export interface Props {
+  project: ProjectEntry;
+}
+
+const { project } = Astro.props;
+---
+
+<article class="project-card">
+  <a class="project-card-main" href={"/projects/" + project.slug + "/"}>
+    <div class="project-art">
+      <img src={project.image} alt="" loading="lazy" />
+    </div>
+    <div class="project-card-body">
+      <div class="project-card-topline">
+        <span class="eyebrow">{project.eyebrow}</span>
+        <span class="status">{project.status}</span>
+      </div>
+      <h3>{project.title}</h3>
+      <p>{project.summary}</p>
+      <div class="project-impact">
+        <span>Evidence</span>
+        <strong>{project.evidence}</strong>
+      </div>
+      <div class="tag-list">
+        {project.stack.slice(0, 4).map((tag) => <span class="tag">{tag}</span>)}
+      </div>
+      <span class="text-link">Read case study <span aria-hidden="true">↗</span></span>
+    </div>
+  </a>
+  {project.href && (
+    <a class="project-external" href={project.href} target="_blank" rel="noreferrer">
+      Open related product <span aria-hidden="true">↗</span>
+    </a>
+  )}
+</article>

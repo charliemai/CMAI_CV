@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f4f6f3"/>
+  <circle cx="1050" cy="70" r="280" fill="#d9efec"/>
+  <circle cx="1130" cy="120" r="130" fill="#f5e4b7"/>
+  <rect x="70" y="72" width="86" height="86" rx="24" fill="#17242b"/>
+  <text x="93" y="128" fill="#f4f6f3" font-family="monospace" font-size="32" font-weight="700">CM</text>
+  <text x="70" y="280" fill="#17242b" font-family="Arial, sans-serif" font-size="76" font-weight="700">Charlie Mai</text>
+  <text x="74" y="356" fill="#087f82" font-family="monospace" font-size="27" letter-spacing="3">CLOUD / DEVOPS / APPLIED AI</text>
+  <text x="74" y="438" fill="#31434b" font-family="Arial, sans-serif" font-size="30">IT DevOps Support Engineer building clearer systems</text>
+  <path d="M74 504H460" stroke="#d19a32" stroke-width="8" stroke-linecap="round"/>
+  <text x="74" y="560" fill="#65747a" font-family="monospace" font-size="22">cv.cmai.ai</text>
+</svg>

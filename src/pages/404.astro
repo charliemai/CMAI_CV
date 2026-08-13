@@ -2,11 +2,14 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title = "404: Not Found" includeSidebar={false}>
-  <div class="text-center">
-    <h1 class="text-9xl font-bold mb-4">🏝</h1>
-    <h1 class="text-9xl font-bold mb-2">404</h1>
-    <h3 class="text-2xl">The page you're looking for couldn't be found.</h3>
-    <a class="btn btn-accent mt-9" href="/">Home</a>
-  </div>
+<BaseLayout title="Page not found | Charlie Mai" description="The requested page could not be found.">
+  <section class="page-intro">
+    <p class="eyebrow">404 · Not found</p>
+    <h1>This route drifted.</h1>
+    <p>The page may have moved during the portfolio rewrite. The main routes are still close by.</p>
+    <div class="button-row">
+      <a class="button" href="/">Return home</a>
+      <a class="button secondary" href="/projects/">View projects</a>
+    </div>
+  </section>
 </BaseLayout>

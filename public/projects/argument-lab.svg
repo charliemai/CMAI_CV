@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">ArgumentLab project illustration</title>
+  <desc id="desc">A reasoning experiment illustration showing claims, evidence, and counterpoints.</desc>
+  <rect width="960" height="540" fill="#f4f6f3"/>
+  <path d="M0 130H960M0 260H960M0 390H960M140 0V540M280 0V540M420 0V540M560 0V540M700 0V540M840 0V540" stroke="#dbe5e4" stroke-width="2"/>
+  <text x="58" y="76" fill="#17242b" font-family="Arial, sans-serif" font-size="35" font-weight="700" letter-spacing="3">ARGUMENTLAB</text>
+  <text x="60" y="112" fill="#087f82" font-family="monospace" font-size="15" letter-spacing="2">REASONING / EVALUATION / UX</text>
+  <rect x="72" y="192" width="220" height="92" rx="17" fill="#17242b"/>
+  <text x="112" y="230" fill="#d9efec" font-family="monospace" font-size="15">CLAIM</text>
+  <text x="112" y="258" fill="#f4f6f3" font-family="Arial, sans-serif" font-size="18">What is being said?</text>
+  <rect x="370" y="192" width="220" height="92" rx="17" fill="#087f82"/>
+  <text x="410" y="230" fill="#f4f6f3" font-family="monospace" font-size="15">EVIDENCE</text>
+  <text x="410" y="258" fill="#f4f6f3" font-family="Arial, sans-serif" font-size="18">Why believe it?</text>
+  <rect x="668" y="192" width="220" height="92" rx="17" fill="#d19a32"/>
+  <text x="700" y="230" fill="#17242b" font-family="monospace" font-size="15">COUNTERPOINT</text>
+  <text x="700" y="258" fill="#17242b" font-family="Arial, sans-serif" font-size="18">What changes it?</text>
+  <path d="M292 238H370M590 238H668" stroke="#d19a32" stroke-width="5"/>
+  <text x="72" y="374" fill="#65747a" font-family="monospace" font-size="17">MAKE THE THINKING INSPECTABLE</text>
+</svg>

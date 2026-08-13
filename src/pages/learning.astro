@@ -1,0 +1,52 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { education, learning } from "../data/site";
+---
+
+<BaseLayout title="Learning | Charlie Mai" description="The study and continuous learning thread behind Charlie Mai's engineering work.">
+  <section class="page-intro">
+    <p class="eyebrow">Learning</p>
+    <h1>Curiosity with a delivery date.</h1>
+    <p>
+      Formal study and continuous practice are useful when they sharpen the quality of the next
+      system, investigation, or decision.
+    </p>
+  </section>
+
+  <section class="section" aria-labelledby="learning-title">
+    <SectionHeading
+      eyebrow="Current learning"
+      title="The thread behind the work."
+      intro="UCD is the current anchor; cloud operations, AI foundations, and applied experiments connect the theory to real constraints."
+      id="learning-title"
+    />
+    <div class="focus-list">
+      {learning.map((item) => (
+        <article class="focus-item">
+          <div class="project-card-topline">
+            <h3>{item.title}</h3>
+            <span class="status">{item.period}</span>
+          </div>
+          <p>{item.description}</p>
+          <div class="tag-list">
+            {item.tags.map((tag) => <span class="tag">{tag}</span>)}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section aria-labelledby="education-title">
+    <SectionHeading eyebrow="Formal education" title="A long-running foundation." id="education-title" />
+    <div class="education-grid">
+      {education.map((item) => (
+        <article class="education-item">
+          <span class="meta-line">{item.period}</span>
+          <h3>{item.programme}</h3>
+          <p>{item.institution}{item.note ? " · " + item.note : ""}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

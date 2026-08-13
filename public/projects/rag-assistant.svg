@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">RAG Troubleshooting Assistant project illustration</title>
+  <desc id="desc">A retrieval and evidence diagram connecting documents to a troubleshooting answer.</desc>
+  <rect width="960" height="540" fill="#17242b"/>
+  <path d="M0 100H960M0 200H960M0 300H960M0 400H960M120 0V540M240 0V540M360 0V540M480 0V540M600 0V540M720 0V540M840 0V540" stroke="#2d424b" stroke-width="1" opacity=".7"/>
+  <text x="58" y="76" fill="#d9efec" font-family="Arial, sans-serif" font-size="31" font-weight="700" letter-spacing="2">RAG ASSISTANT</text>
+  <text x="60" y="110" fill="#d19a32" font-family="monospace" font-size="15" letter-spacing="2">RETRIEVAL / EVIDENCE / OPERATIONS</text>
+  <rect x="60" y="180" width="180" height="70" rx="14" fill="#d9efec"/>
+  <text x="96" y="222" fill="#17242b" font-family="monospace" font-size="18">DOCS</text>
+  <rect x="60" y="292" width="180" height="70" rx="14" fill="#d9efec"/>
+  <text x="91" y="334" fill="#17242b" font-family="monospace" font-size="18">INCIDENTS</text>
+  <path d="M240 215H350M240 327H350M350 215V327M350 271H442M442 271L426 257M442 271L426 285" fill="none" stroke="#d19a32" stroke-width="5"/>
+  <rect x="350" y="190" width="186" height="162" rx="18" fill="#087f82"/>
+  <text x="385" y="235" fill="#f4f6f3" font-family="monospace" font-size="17">EMBED</text>
+  <text x="385" y="270" fill="#f4f6f3" font-family="monospace" font-size="17">RETRIEVE</text>
+  <text x="385" y="305" fill="#f4f6f3" font-family="monospace" font-size="17">RANK</text>
+  <path d="M536 271H644M644 271L628 257M644 271L628 285" fill="none" stroke="#d19a32" stroke-width="5"/>
+  <rect x="658" y="173" width="242" height="195" rx="18" fill="#f4f6f3"/>
+  <text x="694" y="218" fill="#65747a" font-family="monospace" font-size="15">NEXT BEST STEP</text>
+  <rect x="694" y="246" width="168" height="12" rx="6" fill="#d9efec"/>
+  <rect x="694" y="274" width="132" height="12" rx="6" fill="#d9efec"/>
+  <rect x="694" y="302" width="154" height="12" rx="6" fill="#f5e4b7"/>
+  <text x="690" y="423" fill="#d9efec" font-family="monospace" font-size="18">SHOW THE EVIDENCE</text>
+</svg>

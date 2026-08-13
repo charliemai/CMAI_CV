@@ -1,74 +1,151 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import HorizontalCard from "../components/HorizontalCard.astro";
-import { getCollection } from "astro:content";
-import createSlug from "../lib/createSlug"
+import ProjectCard from "../components/ProjectCard.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import {
+  experience,
+  focusAreas,
+  metrics,
+  profile,
+  projects,
+  writing,
+} from "../data/site";
 
-const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-const last_posts = posts.slice(0, 3);
+const featuredProjects = projects.filter((project) => project.featured);
+const recentExperience = experience.slice(0, 3);
+const recentWriting = writing.slice(0, 2);
 ---
 
-<BaseLayout sideBarActiveItemID="home">
-  <div class="pb-12 mt-5">
-    <div class="text-xl py-1">Welcome!</div>
-    <div class="text-5xl font-bold">I'm YUNG-CHI(Charlie) MAI</div>
-    <div class="text-3xl py-3 font-bold">Cloud Engineer & MSc Applicant</div>
-    <div class="py-2">
-      <p class="text-lg">
-        This is my personal application site created to showcase my qualifications for MSc in Computer Science (AI Track) at Trinity College Dublin. I have 15+ years of experience across DevOps, cloud services, mobile apps, and GPT-based AI tools.
+<BaseLayout title={profile.name + " | " + profile.title} description={profile.summary}>
+  <section class="hero-grid section" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow">Dublin · Cloud operations · Applied AI</p>
+      <h1 id="hero-title">{profile.title} building <em>clearer systems.</em></h1>
+      <p class="hero-subline">
+        National Broadband Ireland · Former AWS Cloud Support Engineer II / CloudFront SME · UCD MSc in Computer Science, AI
       </p>
+      <p class="hero-lede">
+        {profile.summary}
+      </p>
+      <div class="button-row">
+        <a class="button" href="/cv/">Read the CV <span aria-hidden="true">↗</span></a>
+        <a class="button secondary" href="/projects/">See selected work</a>
+      </div>
+      <ul class="hero-proof" aria-label="Professional focus">
+        <li>Production support</li>
+        <li>AWS and CDN systems</li>
+        <li>Automation with evidence</li>
+      </ul>
     </div>
-    <div class="mt-8">
-      <a class="btn" href="/cv.pdf" target="_blank">Download CV</a>
-      <a href="https://lkk.dev" target="_blank" class="btn btn-outline ml-5">View My App</a>
+
+    <aside class="hero-aside" aria-label="Profile">
+      <div class="hero-image-frame">
+        <img src={profile.image} alt="Portrait of Charlie Mai" />
+      </div>
+      <div class="hero-note">
+        <strong>Currently</strong>
+        <span>{profile.availability}</span>
+      </div>
+    </aside>
+  </section>
+
+  <section class="section metrics-section" aria-labelledby="proof-title">
+    <SectionHeading
+      eyebrow="Proof points"
+      title="A career built across the stack."
+      intro="The strongest signal is not a list of tools. It is the pattern: high-stakes support, measurable delivery, and useful systems that people can operate."
+      id="proof-title"
+    />
+    <div class="metric-grid">
+      {metrics.map((metric) => (
+        <div class="metric">
+          <strong class="metric-value">{metric.value}</strong>
+          <span class="metric-label">{metric.label}</span>
+        </div>
+      ))}
     </div>
-  </div>
+  </section>
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-2">Highlighted Projects {"</>"}</div>
-  </div>
+  <section class="section split-section" aria-labelledby="focus-title">
+    <div>
+      <SectionHeading
+        eyebrow="What I bring"
+        title="Technical depth with a delivery mindset."
+        intro="I work best where the problem is real, the system is complex, and the next improvement needs to be practical."
+        id="focus-title"
+      />
+      <a class="text-link" href="/cv/">Explore experience and education <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="focus-list">
+      {focusAreas.map((area) => (
+        <article class="focus-item">
+          <h3>{area.title}</h3>
+          <p>{area.description}</p>
+          <div class="tag-list">
+            {area.tags.map((tag) => <span class="tag">{tag}</span>)}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
 
-  <HorizontalCard
-      title="Vouchgether Discount App"
-      img="/project_vouchgether.webp"
-      desc="A React Native app to share and claim discount vouchers across Ireland. Integrated with AWS services and AI classification logic."
-      url="https://lkk.dev"
-      badge="Live"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-      title="Parking Violation Reporter"
-      img="/project_parking.webp"
-      desc="Single-handedly developed a citizen app that handled 400,000+ violation reports in Taiwan within one year."
-      url="#"
-      badge="Popular"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-      title="Custom GPT AI Agent"
-      img="/project_ai.webp"
-      desc="Personal GPT-based assistant with Pinecone-powered vector search. Supports document ingestion and semantic Q&A."
-      url="#"
-      badge="AI"
-  />
+  <section class="section" aria-labelledby="projects-title">
+    <SectionHeading
+      eyebrow="Selected work"
+      title="Projects with a reason to exist."
+      intro="A small set of products and experiments that show how I think: start with a human job, make the system observable, then improve it."
+      id="projects-title"
+    />
+    <div class="project-grid">
+      {featuredProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+    <div class="button-row">
+      <a class="button secondary" href="/projects/">Browse all projects <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
-  </div>
+  <section class="section split-section" aria-labelledby="career-title">
+    <div>
+      <SectionHeading
+        eyebrow="Career signal"
+        title="From incidents to outcomes."
+        intro="The recent chapter combines operational support, cloud expertise, cross-functional delivery, and applied AI study."
+        id="career-title"
+      />
+      <a class="text-link" href="/learning/">See the learning thread <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="mini-timeline">
+      {recentExperience.map((role) => (
+        <article class="mini-timeline-item">
+          <time>{role.period}</time>
+          <h3>{role.position} · {role.company}</h3>
+          <p>{role.summary}</p>
+        </article>
+      ))}
+    </div>
+  </section>
 
-  {
-    last_posts.map((post) => (
-        <>
-          <HorizontalCard
-              title={post.data.title}
-              img={post.data.heroImage}
-              desc={post.data.description}
-              url={"/blog/" + createSlug(post.data.title, post.slug)}
-              target="_self"
-              badge={post.data.badge}
-          />
-          <div class="divider my-0" />
-        </>
-    ))
-  }
+  <section class="section" aria-labelledby="writing-title">
+    <SectionHeading
+      eyebrow="Writing"
+      title="Notes from the work."
+      intro="Short reflections on production support, automation, AI systems, and building a portfolio without the noise of a personal dashboard."
+      id="writing-title"
+    />
+    <div class="writing-list">
+      {recentWriting.map((post) => (
+        <article class="writing-item">
+          <time>{post.date}</time>
+          <div>
+            <span class="tag">{post.tag}</span>
+            <h3>{post.title}</h3>
+            <p>{post.summary}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+    <div class="button-row">
+      <a class="button secondary" href="/writing/">Read all writing <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
 </BaseLayout>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">UCD Sport Auto Booker project illustration</title>
+  <desc id="desc">A scheduling automation illustration showing a calendar, guardrails, and a confirmed slot.</desc>
+  <rect width="960" height="540" fill="#102a35"/>
+  <path d="M0 420H960M0 350H960M0 280H960M0 210H960M0 140H960M140 0V540M280 0V540M420 0V540M560 0V540M700 0V540M840 0V540" stroke="#28515a" stroke-width="1" opacity=".6"/>
+  <text x="58" y="78" fill="#f4f6f3" font-family="Arial, sans-serif" font-size="32" font-weight="700" letter-spacing="2">UCD SPORT AUTO BOOKER</text>
+  <text x="60" y="112" fill="#d19a32" font-family="monospace" font-size="15" letter-spacing="2">UTILITY / SCHEDULING / GUARDRAILS</text>
+  <rect x="82" y="172" width="332" height="246" rx="18" fill="#f4f6f3"/>
+  <rect x="82" y="172" width="332" height="58" rx="18" fill="#087f82"/>
+  <text x="118" y="209" fill="#f4f6f3" font-family="monospace" font-size="18">BOOKING WINDOW</text>
+  <path d="M118 268H378M118 320H378M118 372H378M170 242V400M222 242V400M274 242V400M326 242V400" stroke="#dbe5e4" stroke-width="2"/>
+  <circle cx="248" cy="294" r="16" fill="#d19a32"/>
+  <circle cx="326" cy="346" r="16" fill="#087f82"/>
+  <path d="M508 294H634M634 294L618 280M634 294L618 308" stroke="#d19a32" stroke-width="5" fill="none"/>
+  <rect x="658" y="172" width="240" height="88" rx="18" fill="#d9efec"/>
+  <text x="696" y="207" fill="#17242b" font-family="monospace" font-size="15">CHECK</text>
+  <text x="696" y="237" fill="#17242b" font-family="Arial, sans-serif" font-size="18">Safe to book?</text>
+  <rect x="658" y="286" width="240" height="88" rx="18" fill="#d19a32"/>
+  <text x="696" y="321" fill="#17242b" font-family="monospace" font-size="15">CONFIRMED</text>
+  <text x="696" y="351" fill="#17242b" font-family="Arial, sans-serif" font-size="18">Visible next step</text>
+</svg>
