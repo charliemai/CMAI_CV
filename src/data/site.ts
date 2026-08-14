@@ -1,5 +1,6 @@
 export type ExperienceEntry = {
-  company: string;
+  company?: string;
+  groupTitle?: string;
   position: string;
   period: string;
   location: string;
@@ -29,6 +30,13 @@ export type ProjectEntry = {
   outcome: string;
   currentStatus: string;
   next: string;
+  artefact?: {
+    title: string;
+    alt: string;
+    caption: string;
+    steps: string[];
+  };
+  evaluationContract?: string[];
 };
 
 export type WritingEntry = {
@@ -71,8 +79,8 @@ export const profile = {
 export const metrics = [
   { value: "15+", label: "years across engineering, cloud operations and technical leadership" },
   { value: "440k+", label: "civic reports handled by a public-facing platform" },
-  { value: "Top 1", label: "customer satisfaction recognition within an AWS support team" },
-  { value: "457", label: "AWS support resolves with Top 2 case-performance recognition" },
+  { value: "#1", label: "customer satisfaction ranking within an AWS support team" },
+  { value: "457", label: "AWS support cases resolved; Top 2 case-performance ranking" },
 ];
 
 export const focusAreas = [
@@ -169,7 +177,7 @@ export const experience: ExperienceEntry[] = [
       "Progressed to Cloud Support Engineer II within 21 months and became a CloudFront Subject Matter Expert while resolving complex distributed-cloud issues.",
     bullets: [
       "Resolved 457 complex AWS support cases across CloudFront, S3, Route 53, API Gateway, Lambda, IAM, WAF, SES and media services.",
-      "Recognised as Top 1 in customer satisfaction and Top 2 in case performance within the cloud support team.",
+      "Ranked #1 for customer satisfaction and Top 2 for case performance within an AWS cloud support team.",
       "Accredited as a CloudFront Subject Matter Expert and contributed to mentoring, enablement, documentation and hiring.",
       "Worked with customers, architects and TAMs to reproduce issues, provide root-cause analysis and support critical incident communications.",
     ],
@@ -200,15 +208,15 @@ export const experience: ExperienceEntry[] = [
     ],
   },
   {
-    company: "Earlier engineering and technical leadership",
+    groupTitle: "Earlier Engineering & Technical Leadership",
     position: "Team Lead, Mobile / Android Developer / IT Lead",
     period: "2009 - 2017",
     location: "Taiwan",
     summary:
       "Built software products and led mobile, backend and application delivery across several technology companies.",
     bullets: [
-      "Led native Android and iOS development, CI setup, technical capability building and application architecture improvements.",
-      "Worked across web, hybrid, Java enterprise, mobile and internal systems development.",
+      "Led native mobile development, CI setup, technical capability building and application architecture improvements.",
+      "Worked across Android, iOS, web, hybrid applications, Java enterprise systems and internal business platforms.",
     ],
   },
 ];
@@ -216,9 +224,9 @@ export const experience: ExperienceEntry[] = [
 export const education = [
   {
     institution: "University College Dublin",
-    programme: "MSc in Computer Science (Negotiated Learning), Artificial Intelligence",
+    programme: "MSc in Computer Science (Negotiated Learning)",
     period: "Sep 2025 - Aug 2027",
-    note: "Part-time study; expected 2027.",
+    note: "Part-time study with an AI-focused pathway; expected 2027.",
   },
   {
     institution: "University of Limerick",
@@ -279,6 +287,27 @@ export const projects: ProjectEntry[] = [
       "Keep evidence and uncertainty close to the suggested next action.",
       "Use production-support questions and failure modes to shape the evaluation surface.",
     ],
+    artefact: {
+      title: "Evidence flow from source to review",
+      alt: "Flow from technical documents, runbooks and incident evidence through document ingestion, semantic retrieval and retrieved source passages to an evidence-grounded response, sources, uncertainty, next actions and human engineering review.",
+      caption: "Static evidence-flow diagram for an active lab prototype. No production-adoption claim is made; human engineering review remains required.",
+      steps: [
+        "Technical documents / runbooks / incident evidence",
+        "Document ingestion",
+        "Embeddings and semantic retrieval",
+        "Retrieved source passages",
+        "Evidence-grounded response",
+        "Sources + uncertainty + next actions",
+        "Human engineering review",
+      ],
+    },
+    evaluationContract: [
+      "Known technical questions with expected source passages",
+      "Missing-context tests and ambiguous terminology",
+      "Low-confidence retrieval that should surface uncertainty",
+      "Unsupported-answer abstention rather than invented resolution",
+      "Grounded next actions that remain reviewable by an engineer",
+    ],
     trustBoundaries: [
       "Do not present an unsupported answer as an incident resolution.",
       "Keep the source material inspectable and make human review part of the workflow.",
@@ -318,6 +347,17 @@ export const projects: ProjectEntry[] = [
       "Use feedback and notifications to make a submitted report feel observable rather than disappearing into a form.",
       "Prioritise a simple workflow that could handle meaningful public volume.",
     ],
+    artefact: {
+      title: "Verified reporting workflow",
+      alt: "User flow from capturing violation details to attaching supporting evidence, submitting a civic report and receiving a status or feedback notification.",
+      caption: "Static workflow based on the documented product behaviour. The platform handled more than 440,000 reports; the related social-enterprise concept received a U-START Silver Medal.",
+      steps: [
+        "Capture violation details",
+        "Attach supporting evidence",
+        "Submit civic report",
+        "Receive status or feedback notification",
+      ],
+    },
     trustBoundaries: [
       "Report the measured platform volume without inferring government outcomes.",
       "Keep the case study focused on product ownership and delivery rather than unsupported institutional claims.",
@@ -351,16 +391,15 @@ export const projects: ProjectEntry[] = [
     ownership:
       "I shaped the product experience and connected the mobile client to authentication, media and serverless backend services.",
     technicalShape:
-      "The documented version used React Native with AWS Lambda, Cognito, S3 and DynamoDB. This description is intentionally bounded to that version; the current external product state is not asserted here.",
+      "The documented version used React Native with AWS Lambda, Cognito, S3 and DynamoDB, separating mobile interaction, identity, application workflow, media and stored data responsibilities.",
     decisions: [
       "Keep discovery, sharing and claiming as a single understandable user journey.",
       "Separate identity, media and application data responsibilities across the documented AWS services.",
       "Balance product iteration with the trust boundaries of user-generated voucher content.",
     ],
     trustBoundaries: [
-      "Do not imply that the documented architecture is the current live product architecture.",
-      "Do not infer payment, messaging or production-provider integrations without source evidence.",
-      "Keep the product status explicitly historical.",
+      "Use the documented service boundaries as an historical design reference, not a claim about today's product.",
+      "Keep payments, messaging and other integrations outside the case study because they are not documented.",
     ],
     testing: [
       "Exercise the discovery, sharing and claim flows as a mobile user journey.",
@@ -369,7 +408,20 @@ export const projects: ProjectEntry[] = [
     ],
     outcome:
       "The case study demonstrates product ownership, mobile delivery and practical serverless integration without overstating the current product state.",
-    currentStatus: "Historical product case study; current live status not asserted.",
+    currentStatus: "Historical mobile product case study. The documented architecture describes that version only; current live architecture is not asserted.",
+    artefact: {
+      title: "Historical product flow",
+      alt: "Historical product flow from discovering a voucher to authenticating the user with Cognito, sharing voucher and media, running a Lambda-backed application workflow, storing application data and media, and claiming the voucher.",
+      caption: "Static flow for the documented historical version only, using the recorded React Native and AWS service boundaries.",
+      steps: [
+        "Discover voucher",
+        "Authenticate user with Cognito",
+        "Share voucher and media",
+        "Lambda-backed application workflow",
+        "Store application data and media",
+        "Claim voucher",
+      ],
+    },
     next: "Refresh the case study only if a current canonical product source becomes available.",
   },
   {

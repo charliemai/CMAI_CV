@@ -70,7 +70,14 @@ import {
           {experience.map((role) => (
             <article class="timeline-item">
               <div class="timeline-period">{role.period} - {role.location}</div>
-              <h3>{role.position} <span>at {role.company}</span></h3>
+              {role.groupTitle ? (
+                <>
+                  <h3>{role.groupTitle}</h3>
+                  <p class="timeline-position">{role.position}</p>
+                </>
+              ) : (
+                <h3>{role.position} <span>at {role.company}</span></h3>
+              )}
               <p class="timeline-summary">{role.summary}</p>
               <ul>
                 {role.bullets.map((bullet) => <li>{bullet}</li>)}
@@ -86,9 +93,9 @@ import {
           {skillGroups.map((group) => (
             <article class="skill-group">
               <h3>{group.title}</h3>
-              <div class="tag-list">
-                {group.items.map((item) => <span class="tag">{item}</span>)}
-              </div>
+              <ul class="tag-list" aria-label={group.title}>
+                {group.items.map((item) => <li class="tag">{item}</li>)}
+              </ul>
             </article>
           ))}
         </div>
@@ -109,9 +116,9 @@ import {
 
       <section aria-labelledby="certifications-title">
         <h2 id="certifications-title">Certifications and recognition</h2>
-        <div class="tag-list">
-          {certifications.map((certification) => <span class="tag">{certification}</span>)}
-        </div>
+        <ul class="tag-list" aria-label="Certifications and recognition">
+          {certifications.map((certification) => <li class="tag">{certification}</li>)}
+        </ul>
       </section>
     </div>
   </div>

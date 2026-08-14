@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import base64
+import json
 import re
 import sys
 import zlib
@@ -77,10 +78,13 @@ def main() -> int:
         "recruiter-first title": "Cloud, DevOps & Production Reliability Engineer",
         "current role": "National Broadband Ireland",
         "former CloudFront expertise": "CloudFront SME",
-        "UCD anchor": "MSc in Computer Science (Negotiated Learning), Artificial Intelligence",
+        "UCD canonical title": "MSc in Computer Science (Negotiated Learning)",
+        "UCD pathway wording": "AI-focused pathway",
         "experience proof": "15+",
         "public impact proof": "440k+",
         "AWS support proof": "457",
+        "natural AWS ranking wording": "Ranked #1 for customer satisfaction",
+        "natural AWS case wording": "Resolved 457 complex AWS support cases",
         "permanent redirect config": '"permanent": true',
     }
     for label, needle in required.items():
@@ -93,12 +97,18 @@ def main() -> int:
         "encoding artefact": "-- IT professional",
         "old positioning": "living portfolio",
         "old positioning 2": "growth log",
+        "incorrect UCD title": "MSc in Computer Science (Negotiated Learning), Artificial Intelligence",
         "unscoped AWS ranking": "AWS #1",
+        "awkward Top 1 wording": "Top 1",
+        "awkward support wording": "support resolves",
+        "fake earlier employer": "at Earlier engineering and technical leadership",
+        "old earlier-career heading": "Earlier engineering and technical leadership",
         "AI-first navigation": "Cloud / DevOps / AI",
         "placeholder link": 'href="#"',
     }
+    source_lower = source.casefold()
     for label, needle in forbidden.items():
-        if needle in source:
+        if needle.casefold() in source_lower:
             fail(f"forbidden {label}: {needle}", failures)
 
     redirect_config = read_text(ROOT / "vercel.json")
@@ -108,6 +118,8 @@ def main() -> int:
         "/blog/tag/Learning": "/learning/",
         "/services/": "/projects/",
         "/projects/rag-troubleshooting-gpt-assistant": "/projects/rag-troubleshooting-assistant/",
+        "/blog/self-evolving-ai-agents-my-vision-and-challenges": "/lab/",
+        "/blog/ul-ai-certificate-what-i-learned-and-how-it-changed-my-builds": "/learning/",
     }.items():
         if f'"source": "{source_path}"' not in redirect_config or f'"destination": "{destination}"' not in redirect_config:
             fail(f"missing redirect {source_path} -> {destination}", failures)
@@ -141,6 +153,41 @@ def main() -> int:
             fail("mobile number leaked into built HTML", failures)
         if "href=\"#\"" in built_source:
             fail("placeholder link leaked into built HTML", failures)
+        for route in built_routes:
+            route_html_path = dist / route
+            route_html = read_text(route_html_path)
+            if len(re.findall(r"<h1\b", route_html)) != 1:
+                fail(f"{route} must have exactly one logical h1", failures)
+        if re.search(r"<div[^>]*class=\"tag-list", built_source):
+            fail("tag lists must use semantic ul elements", failures)
+        if len(re.findall(r"<ul[^>]*class=\"tag-list", built_source)) < 10:
+            fail("semantic tag-list coverage is incomplete", failures)
+        if "technical-artefact" not in built_source or "flow-diagram" not in built_source:
+            fail("flagship project artefacts are missing from built HTML", failures)
+        if "MSc in Computer Science (Negotiated Learning), Artificial Intelligence" in built_source:
+            fail("incorrect UCD title leaked into built HTML", failures)
+        if "MSc in Computer Science (Negotiated Learning)" not in built_source:
+            fail("canonical UCD title missing from built HTML", failures)
+        if '<link rel="canonical" href="https://cv.cmai.ai/"' not in built_source:
+            fail("homepage canonical URL is missing", failures)
+        if not (dist / "sitemap-index.xml").exists():
+            fail("generated sitemap is missing", failures)
+        if not (dist / "robots.txt").exists():
+            fail("robots.txt is missing from the built site", failures)
+        for raw_json in re.findall(r'<script type="application/ld\+json">(.*?)</script>', built_source, flags=re.DOTALL):
+            try:
+                schema = json.loads(raw_json)
+            except json.JSONDecodeError as error:
+                fail(f"invalid JSON-LD: {error}", failures)
+                continue
+            if schema.get("@type") != "Person":
+                fail("Person JSON-LD is missing", failures)
+            if "0874614368" in raw_json:
+                fail("phone number leaked into JSON-LD", failures)
+
+        for asset in sorted(set(re.findall(r'(?:src|href)="(/[^"#?]+\.(?:svg|JPG|jpg|png|pdf))', built_source))):
+            if not (ROOT / "public" / asset.lstrip("/")).exists():
+                fail(f"broken local asset: {asset}", failures)
 
     pdf_path = ROOT / "public" / "cv.pdf"
     if not pdf_path.exists():
@@ -153,15 +200,55 @@ def main() -> int:
             metadata_title = str((reader.metadata or {}).get("/Title", ""))
         else:
             page_count, pdf_text, metadata_title = fallback_pdf_inspect(pdf_path)
+        pdf_text_normalized = re.sub(r"\s+", " ", pdf_text).strip()
         if page_count != 2:
             fail(f"CV PDF must have exactly 2 pages, got {page_count}", failures)
+        for page in reader.pages if PdfReader is not None else []:
+            width = float(page.mediabox.width)
+            height = float(page.mediabox.height)
+            if abs(width - 595.2756) > 1 or abs(height - 841.8898) > 1:
+                fail(f"CV PDF page is not A4: {width} x {height}", failures)
         for label, needle in {
             "mobile number in PDF": "0874614368",
             "stale duration in PDF": "16 years",
             "PDF separator artefact": "--",
+            "incorrect UCD title in PDF": "MSc in Computer Science (Negotiated Learning), Artificial Intelligence",
+            "awkward Top 1 wording in PDF": "Top 1",
+            "awkward support wording in PDF": "support resolves",
+            "fake earlier employer in PDF": "at Earlier engineering and technical leadership",
         }.items():
             if needle in pdf_text:
                 fail(f"{label}: {needle}", failures)
+        for label, needle in {
+            "canonical UCD title in PDF": "MSc in Computer Science (Negotiated Learning)",
+            "AI pathway wording in PDF": "AI-focused pathway",
+            "natural ranking wording in PDF": "Ranked #1 for customer satisfaction",
+            "natural case wording in PDF": "Resolved 457 complex AWS support cases",
+            "earlier-career heading in PDF": "Earlier Engineering & Technical Leadership",
+        }.items():
+            if needle not in pdf_text:
+                fail(f"missing {label}: {needle}", failures)
+        for proof_row in [
+            "15+ - years across engineering and operations",
+            "440k+ - civic reports handled by a public platform",
+            "#1 - customer satisfaction ranking within an AWS support team",
+            "457 - AWS support cases resolved; Top 2 case-performance ranking",
+        ]:
+            if proof_row not in pdf_text_normalized:
+                fail(f"PDF proof value and label are not adjacent: {proof_row}", failures)
+        experience_order = [
+            "National Broadband Ireland",
+            "VIVERSE",
+            "Amazon Web Services (AWS)",
+            "Verizon Media Platform",
+            "CATCHPLAY",
+            "Earlier Engineering & Technical Leadership",
+        ]
+        positions = [pdf_text.find(item) for item in experience_order]
+        if any(position < 0 for position in positions) or positions != sorted(positions):
+            fail(f"PDF experience order is not reverse chronological: {positions}", failures)
+        if len(pdf_text.strip()) < 3000:
+            fail("CV PDF text extraction is unexpectedly sparse", failures)
         if "Cloud, DevOps & Production Reliability Engineer" not in metadata_title:
             fail("PDF metadata title is not recruiter-first", failures)
 

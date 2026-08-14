@@ -48,9 +48,9 @@ const { project } = Astro.props;
       </div>
       <div class="detail-meta-block">
         <span>Stack</span>
-        <div class="tag-list">
-          {project.stack.map((tag) => <span class="tag">{tag}</span>)}
-        </div>
+        <ul class="tag-list" aria-label={project.title + " technology stack"}>
+          {project.stack.map((tag) => <li class="tag">{tag}</li>)}
+        </ul>
       </div>
     </aside>
 
@@ -67,6 +67,28 @@ const { project } = Astro.props;
         <h2 id="shape-title">Technical shape</h2>
         <p>{project.technicalShape}</p>
       </section>
+      {project.artefact && (
+        <figure class="technical-artefact" aria-labelledby="artefact-title">
+          <div class="flow-diagram">
+            <ol aria-label={project.artefact.alt}>
+              {project.artefact.steps.map((step) => <li>{step}</li>)}
+            </ol>
+          </div>
+          <figcaption>
+            <strong id="artefact-title">{project.artefact.title}</strong>
+            <span>{project.artefact.caption}</span>
+          </figcaption>
+        </figure>
+      )}
+      {project.evaluationContract && (
+        <section class="detail-section evaluation-contract" aria-labelledby="evaluation-title">
+          <h2 id="evaluation-title">Evaluation contract</h2>
+          <p class="section-note">Current validation method; no measured result is claimed here.</p>
+          <ul>
+            {project.evaluationContract.map((item) => <li>{item}</li>)}
+          </ul>
+        </section>
+      )}
       <section class="detail-section" aria-labelledby="decisions-title">
         <h2 id="decisions-title">Key engineering decisions</h2>
         <ul>

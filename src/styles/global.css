@@ -491,7 +491,9 @@ img {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
-  margin-top: 0.85rem;
+  margin: 0.85rem 0 0;
+  padding: 0;
+  list-style: none;
 }
 
 .tag,
@@ -795,6 +797,13 @@ img {
   font-weight: 500;
 }
 
+.timeline-position {
+  margin: -0.1rem 0 0.6rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
 .timeline-summary {
   margin: 0.6rem 0;
   color: var(--ink-soft);
@@ -898,6 +907,86 @@ img {
 
 .detail-section ul {
   margin-top: 0.4rem;
+}
+
+.technical-artefact {
+  max-width: 720px;
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: var(--panel-warm);
+}
+
+.flow-diagram ol {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: flow-step;
+}
+
+.flow-diagram li {
+  position: relative;
+  min-height: 2.55rem;
+  padding: 0.65rem 0.8rem 0.65rem 2.7rem;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  background: var(--panel);
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  font-weight: 650;
+}
+
+.flow-diagram li::before {
+  position: absolute;
+  top: 50%;
+  left: 0.8rem;
+  display: grid;
+  width: 1.25rem;
+  height: 1.25rem;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--cyan-soft);
+  color: var(--cyan-dark);
+  content: counter(flow-step);
+  counter-increment: flow-step;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  transform: translateY(-50%);
+}
+
+.technical-artefact figcaption {
+  display: grid;
+  gap: 0.25rem;
+  margin-top: 0.9rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.technical-artefact figcaption strong {
+  color: var(--ink);
+  font-size: 0.84rem;
+}
+
+.evaluation-contract {
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.evaluation-contract h2 {
+  margin-bottom: 0.25rem;
+}
+
+.evaluation-contract .section-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.84rem;
 }
 
 .detail-meta {

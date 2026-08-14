@@ -24,9 +24,9 @@ const { project } = Astro.props;
         <span>Evidence</span>
         <strong>{project.evidence}</strong>
       </div>
-      <div class="tag-list">
-        {project.stack.slice(0, 4).map((tag) => <span class="tag">{tag}</span>)}
-      </div>
+      <ul class="tag-list" aria-label={project.title + " technology stack"}>
+        {project.stack.slice(0, 4).map((tag) => <li class="tag">{tag}</li>)}
+      </ul>
       <span class="text-link">Read case study <span aria-hidden="true">-&gt;</span></span>
     </div>
   </a>

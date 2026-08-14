@@ -31,9 +31,9 @@ import { education, learning } from "../data/site";
             <span class="status">{item.period}</span>
           </div>
           <p>{item.description}</p>
-          <div class="tag-list">
-            {item.tags.map((tag) => <span class="tag">{tag}</span>)}
-          </div>
+          <ul class="tag-list" aria-label={item.title + " topics"}>
+            {item.tags.map((tag) => <li class="tag">{tag}</li>)}
+          </ul>
         </article>
       ))}
     </div>

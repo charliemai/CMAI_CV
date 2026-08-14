@@ -89,8 +89,8 @@ styles.add(
         name="PdfBody",
         parent=styles["Normal"],
         fontName="Helvetica",
-        fontSize=8.4,
-        leading=10.5,
+        fontSize=9.0,
+        leading=11.4,
         textColor=INK_SOFT,
         spaceAfter=3,
     )
@@ -100,8 +100,8 @@ styles.add(
         name="PdfSmall",
         parent=styles["Normal"],
         fontName="Helvetica",
-        fontSize=7.4,
-        leading=9.1,
+        fontSize=7.8,
+        leading=9.6,
         textColor=INK_SOFT,
         spaceAfter=1.5,
     )
@@ -111,8 +111,8 @@ styles.add(
         name="PdfSmallMuted",
         parent=styles["Normal"],
         fontName="Helvetica",
-        fontSize=7.2,
-        leading=8.8,
+        fontSize=7.6,
+        leading=9.3,
         textColor=MUTED,
         spaceAfter=1,
     )
@@ -149,6 +149,17 @@ styles.add(
         textColor=MUTED,
     )
 )
+styles.add(
+    ParagraphStyle(
+        name="PdfMetricRow",
+        parent=styles["Normal"],
+        fontName="Helvetica",
+        fontSize=8.4,
+        leading=10.2,
+        textColor=INK_SOFT,
+        spaceAfter=0,
+    )
+)
 
 
 def p(text: str, style: str = "PdfBody") -> Paragraph:
@@ -156,7 +167,7 @@ def p(text: str, style: str = "PdfBody") -> Paragraph:
 
 
 def bullet(text: str) -> Paragraph:
-    return Paragraph("<bullet>&bull;</bullet>" + esc(text), styles["PdfSmall"])
+    return Paragraph("- " + esc(text), styles["PdfSmall"])
 
 
 def section(title: str) -> list[object]:
@@ -173,13 +184,22 @@ def role_block(
     location: str,
     summary: str,
     bullets: list[str],
+    group_title: bool = False,
 ) -> list[object]:
-    heading = p(
-        f"<b>{esc(role)}</b> <font color=\"{MUTED.hexval()}\">at {esc(company)}</font>",
-        "PdfRole",
-    )
+    if group_title:
+        heading = p(f"<b>{esc(company)}</b>", "PdfRole")
+        role_line = p(esc(role), "PdfSmallMuted")
+    else:
+        heading = p(
+            f"<b>{esc(role)}</b> <font color=\"{MUTED.hexval()}\">at {esc(company)}</font>",
+            "PdfRole",
+        )
+        role_line = None
     meta = p(f"{esc(period)} - {esc(location)}", "PdfSmallMuted")
-    story: list[object] = [heading, meta, p(esc(summary), "PdfSmall")]
+    story: list[object] = [heading]
+    if role_line is not None:
+        story.append(role_line)
+    story.extend([meta, p(esc(summary), "PdfSmall")])
     story.extend(bullet(item) for item in bullets)
     story.append(Spacer(1, 2.5))
     return [KeepTogether(story)]
@@ -291,25 +311,23 @@ def build() -> None:
 
     story.extend(section("Selected proof"))
     metrics = [
-        [p("15+", "PdfMetricValue"), p("440k+", "PdfMetricValue"), p("Top 1", "PdfMetricValue"), p("457", "PdfMetricValue")],
-        [
-            p("years across engineering and operations", "PdfMetricLabel"),
-            p("civic reports handled by a public platform", "PdfMetricLabel"),
-            p("customer satisfaction within AWS support team", "PdfMetricLabel"),
-            p("support resolves; Top 2 case performance", "PdfMetricLabel"),
-        ],
+        [p('<font color="#075B61"><b>15+</b></font> - years across engineering and operations', "PdfMetricRow")],
+        [p('<font color="#075B61"><b>440k+</b></font> - civic reports handled by a public platform', "PdfMetricRow")],
+        [p('<font color="#075B61"><b>#1</b></font> - customer satisfaction ranking within an AWS support team', "PdfMetricRow")],
+        [p('<font color="#075B61"><b>457</b></font> - AWS support cases resolved; Top 2 case-performance ranking', "PdfMetricRow")],
     ]
-    metric_table = Table(metrics, colWidths=[(A4[0] - 34 * mm) / 4] * 4, hAlign="LEFT")
+    metric_table = Table(metrics, colWidths=[A4[0] - 34 * mm], hAlign="LEFT")
     metric_table.setStyle(
         TableStyle(
             [
                 ("VALIGN", (0, 0), (-1, -1), "TOP"),
                 ("BOX", (0, 0), (-1, -1), 0.5, LINE),
                 ("INNERGRID", (0, 0), (-1, -1), 0.35, LINE),
-                ("LEFTPADDING", (0, 0), (-1, -1), 6),
-                ("RIGHTPADDING", (0, 0), (-1, -1), 6),
-                ("TOPPADDING", (0, 0), (-1, -1), 4),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+                ("BACKGROUND", (0, 0), (-1, -1), PANEL),
+                ("LEFTPADDING", (0, 0), (-1, -1), 7),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 7),
+                ("TOPPADDING", (0, 0), (-1, -1), 3),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
             ]
         )
     )
@@ -327,6 +345,20 @@ def build() -> None:
                 "Operate event-driven AWS systems integrating Lambda, Step Functions, EventBridge, API integrations, PostgreSQL and commercial platforms.",
                 "Investigate production incidents, integration failures and recurring defects using logs, data analysis and evidence-driven RCA.",
                 "Build repeatable test, deployment and diagnostic workflows; develop Python automation and observability tooling.",
+                "Support production releases, maintenance activities and cross-system workflows involving cloud services, internal platforms and third-party applications.",
+            ],
+        )
+    )
+    story.extend(
+        role_block(
+            "VIVERSE",
+            "Business Programme Manager",
+            "Apr 2024 - Feb 2025",
+            "Dublin, Ireland",
+            "Led cross-functional delivery and customer-facing technical coordination for product and enterprise initiatives across EMEA.",
+            [
+                "Managed parallel workstreams across engineering, R&D and business stakeholders; aligned scope, requirements and delivery plans.",
+                "Connected technical teams and business owners so decisions moved from ambiguity to delivery.",
             ],
         )
     )
@@ -339,19 +371,10 @@ def build() -> None:
             "Progressed to Cloud Support Engineer II within 21 months and became a CloudFront SME while resolving complex distributed-cloud issues.",
             [
                 "Resolved 457 complex AWS support cases across CloudFront, S3, Route 53, API Gateway, Lambda, IAM, WAF, SES and media services.",
-                "Recognised as Top 1 in customer satisfaction and Top 2 in case performance within the cloud support team.",
+                "Ranked #1 for customer satisfaction and Top 2 for case performance within an AWS cloud support team.",
                 "Accredited as a CloudFront SME; contributed to mentoring, enablement, documentation and hiring.",
+                "Worked with customers, architects and TAMs to reproduce issues, provide root-cause analysis and support critical incident communications.",
             ],
-        )
-    )
-    story.extend(
-        role_block(
-            "VIVERSE",
-            "Business Programme Manager",
-            "Apr 2024 - Feb 2025",
-            "Dublin, Ireland",
-            "Led cross-functional delivery and customer-facing technical coordination for product and enterprise initiatives across EMEA.",
-            ["Managed parallel workstreams across engineering, R&D and business stakeholders; aligned scope, requirements and delivery plans."],
         )
     )
 
@@ -386,39 +409,53 @@ def build() -> None:
     )
     story.extend(
         role_block(
-            "Earlier engineering and technical leadership",
+            "Earlier Engineering & Technical Leadership",
             "Team Lead, Mobile / Android Developer / IT Lead",
             "2009 - 2017",
             "Taiwan",
             "Built software products and led mobile, backend and application delivery across several technology companies.",
-            ["Led mobile development, CI setup, technical capability building and application architecture improvements across web, Java enterprise and internal systems."],
+            [
+                "Led native mobile development, CI setup, technical capability building and application architecture improvements.",
+                "Worked across Android, iOS, web, hybrid applications, Java enterprise systems and internal business platforms.",
+            ],
+            group_title=True,
         )
     )
 
     story.extend(section("Selected projects"))
-    story.extend(project_line("RAG Troubleshooting Assistant", "Active lab", "Evidence-grounded operational AI prototype exploring ingestion, retrieval, source visibility, uncertainty and useful next actions. No production adoption claim."))
-    story.extend(project_line("Parking Violation Reporter", "Public impact case study", "Citizen reporting platform that handled more than 440,000 reports; related social-enterprise concept received a U-START Silver Medal."))
-    story.extend(project_line("Vouchgether", "Historical case study", "Original mobile product case study using the documented React Native and serverless AWS foundation; current live architecture is not asserted."))
+    story.extend(project_line("RAG Troubleshooting Assistant", "Active lab", "Python service prototype for document ingestion, semantic retrieval, source visibility and human review; evaluation contract covers missing context, ambiguity, abstention and grounded next actions. No production adoption claim."))
+    story.extend(project_line("Parking Violation Reporter", "Public impact case study", "Mobile workflow: capture violation details, attach evidence, submit a civic report and receive status or feedback; the platform handled more than 440,000 reports and the related concept received a U-START Silver Medal."))
+    story.extend(project_line("Vouchgether", "Historical case study", "Documented flow using React Native, Cognito, Lambda, S3 and DynamoDB across voucher discovery, sharing and claiming; historical version only, with no current live architecture claim."))
+
+    story.extend(section("Operating principles"))
+    story.extend(
+        [
+            bullet("Make failure behaviour visible and the next engineering action explicit."),
+            bullet("Keep measured evidence, historical context and current status separate."),
+            bullet("Use human review when an automated answer could change a high-consequence decision."),
+            bullet("Prefer reproducible checks and small automation before adding platform complexity."),
+        ]
+    )
 
     story.extend(section("Education"))
-    education_rows = [
-        [p("<b>MSc in Computer Science (Negotiated Learning), Artificial Intelligence</b><br/>University College Dublin - Sep 2025 - Aug 2027; part-time study, expected 2027.", "PdfSmall"), p("<b>Certificate in Artificial Intelligence</b><br/>University of Limerick - Sep 2025 - Jan 2026; First Class Honours.", "PdfSmall")],
-        [p("<b>Master of Information Technology</b><br/>Queensland University of Technology - 2007 - 2008; GPA 6.5 / 7.0.", "PdfSmall"), p("<b>Bachelor of Civil Engineering</b><br/>National Chiao Tung University - 2003 - 2006.", "PdfSmall")],
-    ]
-    education_table = Table(education_rows, colWidths=[(A4[0] - 34 * mm) / 2] * 2, hAlign="LEFT")
-    education_table.setStyle(TableStyle([
-        ("VALIGN", (0, 0), (-1, -1), "TOP"),
-        ("BOX", (0, 0), (-1, -1), 0.5, LINE),
-        ("INNERGRID", (0, 0), (-1, -1), 0.35, LINE),
-        ("LEFTPADDING", (0, 0), (-1, -1), 7),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 7),
-        ("TOPPADDING", (0, 0), (-1, -1), 5),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
-    ]))
-    story.append(education_table)
+    story.extend(
+        [
+            p("<b>MSc in Computer Science (Negotiated Learning)</b><br/>University College Dublin - Sep 2025 - Aug 2027; part-time study with an AI-focused pathway; expected 2027.", "PdfSmall"),
+            p("<b>Certificate in Artificial Intelligence</b><br/>University of Limerick - Sep 2025 - Jan 2026; First Class Honours.", "PdfSmall"),
+            p("<b>Master of Information Technology</b><br/>Queensland University of Technology - 2007 - 2008; GPA 6.5 / 7.0; Dean's List and scholarship recognition.", "PdfSmall"),
+            p("<b>Bachelor of Civil Engineering</b><br/>National Chiao Tung University - 2003 - 2006.", "PdfSmall"),
+        ]
+    )
 
     story.extend(section("Certifications and recognition"))
-    story.append(p("AWS Certified Solutions Architect - Associate  |  U-START Social Enterprise competition - Silver Medal  |  Earlier Java, Java EE and Android certifications", "PdfSmall"))
+    story.extend(
+        [
+            bullet("AWS Certified Solutions Architect - Associate"),
+            bullet("U-START Social Enterprise competition - Silver Medal"),
+            bullet("Earlier Java, Java EE and Android certifications"),
+            bullet("Languages: English (Full professional); Mandarin (Native or bilingual)"),
+        ]
+    )
 
     doc.build(story)
     print(f"Wrote {OUTPUT} ({OUTPUT.stat().st_size} bytes)")

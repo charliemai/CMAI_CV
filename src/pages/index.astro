@@ -75,9 +75,9 @@ const plannedWriting = writing.slice(0, 2);
         <article class="focus-item">
           <h3>{area.title}</h3>
           <p>{area.description}</p>
-          <div class="tag-list">
-            {area.tags.map((tag) => <span class="tag">{tag}</span>)}
-          </div>
+          <ul class="tag-list" aria-label={area.title + " capabilities"}>
+            {area.tags.map((tag) => <li class="tag">{tag}</li>)}
+          </ul>
         </article>
       ))}
     </div>
