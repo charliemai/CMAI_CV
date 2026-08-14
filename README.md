@@ -13,18 +13,22 @@ The site is optimised for job search and technical credibility. The primary rout
 ## Local development
 
 Install dependencies with pnpm install, then start the development server with pnpm run dev.
-The production build is generated with pnpm run build.
+The production build is generated with pnpm run build. Run pnpm run validate (or pnpm test)
+after a content change to check the public-safe assertions, built routes, internal links and PDF.
 
 ## Content and assets
 
 - src/data/site.ts is the canonical web content model.
-- public/cv.pdf is the latest LinkedIn-generated formal CV PDF.
+- scripts/build_cv_pdf.py is the reproducible source for the two-page public CV PDF.
+- public/cv.pdf is the generated formal CV PDF; the owner-provided Profile.pdf remains the factual source,
+  not a public site asset.
 - public/profile.JPG is the avatar used by the site.
 - public/projects/ contains the project diagrams used by the portfolio cards and case studies.
 - public/social-card.svg is the default social preview image.
 
-When the formal CV changes, update public/cv.pdf and review the corresponding facts in
-src/data/site.ts. UCD is the current MSc institution; old Trinity wording must not return.
+When the formal CV changes, update scripts/build_cv_pdf.py and src/data/site.ts, regenerate
+public/cv.pdf, then run pnpm run build and pnpm run validate. UCD is the current MSc
+institution; old Trinity wording must not return.
 
 ## Deployment note
 

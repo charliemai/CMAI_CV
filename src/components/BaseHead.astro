@@ -10,7 +10,8 @@ export interface Props {
 }
 
 const { title, description, image = "/social-card.svg", ogType = "website" } = Astro.props;
-const canonical = Astro.url.toString();
+const canonicalPath = Astro.url.pathname.endsWith("/") ? Astro.url.pathname : Astro.url.pathname + "/";
+const canonical = new URL(canonicalPath, Astro.site ?? Astro.url).toString();
 const socialImage = new URL(image, Astro.site ?? Astro.url).toString();
 const personSchema = {
   "@context": "https://schema.org",
@@ -21,6 +22,14 @@ const personSchema = {
   jobTitle: profile.title,
   description: profile.summary,
   email: "mailto:" + profile.email,
+  worksFor: {
+    "@type": "Organization",
+    name: "National Broadband Ireland",
+  },
+  alumniOf: [
+    { "@type": "CollegeOrUniversity", name: "University College Dublin" },
+    { "@type": "CollegeOrUniversity", name: "University of Limerick" },
+  ],
   address: {
     "@type": "PostalAddress",
     addressLocality: "Dublin",
@@ -36,6 +45,7 @@ const personSchema = {
 <meta name="author" content="Charlie Mai" />
 <meta name="generator" content={Astro.generator} />
 <meta name="robots" content="index, follow" />
+<meta name="format-detection" content="telephone=no" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="canonical" href={canonical} />
 
@@ -48,10 +58,12 @@ const personSchema = {
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={socialImage} />
+<meta property="og:image:alt" content="Charlie Mai - Cloud, DevOps and Production Reliability Engineer" />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:url" content={canonical} />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={socialImage} />
+<meta name="twitter:image:alt" content="Charlie Mai - Cloud, DevOps and Production Reliability Engineer" />
 <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />

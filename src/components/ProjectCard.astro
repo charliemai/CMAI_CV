@@ -11,7 +11,7 @@ const { project } = Astro.props;
 <article class="project-card">
   <a class="project-card-main" href={"/projects/" + project.slug + "/"}>
     <div class="project-art">
-      <img src={project.image} alt="" loading="lazy" />
+      <img src={project.image} alt={project.title + " project illustration"} loading="lazy" width="1200" height="680" />
     </div>
     <div class="project-card-body">
       <div class="project-card-topline">
@@ -27,12 +27,12 @@ const { project } = Astro.props;
       <div class="tag-list">
         {project.stack.slice(0, 4).map((tag) => <span class="tag">{tag}</span>)}
       </div>
-      <span class="text-link">Read case study <span aria-hidden="true">↗</span></span>
+      <span class="text-link">Read case study <span aria-hidden="true">-&gt;</span></span>
     </div>
   </a>
   {project.href && (
     <a class="project-external" href={project.href} target="_blank" rel="noreferrer">
-      Open related product <span aria-hidden="true">↗</span>
+      Open related product <span aria-hidden="true">-&gt;</span>
     </a>
   )}
 </article>

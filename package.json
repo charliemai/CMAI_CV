@@ -9,7 +9,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "validate": "python scripts/validate_site.py",
+    "test": "python scripts/validate_site.py"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",

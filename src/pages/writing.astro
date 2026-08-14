@@ -4,29 +4,31 @@ import SectionHeading from "../components/SectionHeading.astro";
 import { writing } from "../data/site";
 ---
 
-<BaseLayout title="Writing | Charlie Mai" description="Writing about production support, automation, AI systems, and technical portfolios.">
+<BaseLayout
+  title="Writing status | Charlie Mai"
+  description="Planned and in-development notes about production support, automation, applied AI and technical judgement."
+>
   <section class="page-intro">
-    <p class="eyebrow">Writing</p>
-    <h1>Notes from the work.</h1>
+    <p class="eyebrow">Writing status</p>
+    <h1>Useful notes, when they are ready.</h1>
     <p>
-      Short, useful reflections on production support, automation, AI systems, and the judgement
-      behind a good technical portfolio.
+      Writing stays secondary to the CV and project evidence. These entries are planned or in development; none is presented as a published article until there is substantive material behind it.
     </p>
   </section>
 
   <section aria-labelledby="writing-list-title">
     <SectionHeading
-      eyebrow="Essays and notes"
+      eyebrow="In development"
       title="A quieter layer of the portfolio."
-      intro="Writing stays secondary to the CV and project evidence, but it gives context to the decisions behind them."
+      intro="The intended subjects come from production support, automation, evidence-grounded AI and the judgement behind a good technical portfolio."
       id="writing-list-title"
     />
     <div class="writing-list">
       {writing.map((post) => (
-        <article class="writing-item">
+        <article class="writing-item writing-item-planned">
           <time>{post.date}</time>
           <div>
-            <span class="tag">{post.tag}</span>
+            <span class="tag">{post.status}</span>
             <h3>{post.title}</h3>
             <p>{post.summary}</p>
           </div>

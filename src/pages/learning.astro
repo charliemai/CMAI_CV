@@ -4,13 +4,15 @@ import SectionHeading from "../components/SectionHeading.astro";
 import { education, learning } from "../data/site";
 ---
 
-<BaseLayout title="Learning | Charlie Mai" description="The study and continuous learning thread behind Charlie Mai's engineering work.">
+<BaseLayout
+  title="Learning | Charlie Mai"
+  description="The study and continuous learning thread behind Charlie Mai's Cloud, DevOps and Production Reliability work."
+>
   <section class="page-intro">
     <p class="eyebrow">Learning</p>
     <h1>Curiosity with a delivery date.</h1>
     <p>
-      Formal study and continuous practice are useful when they sharpen the quality of the next
-      system, investigation, or decision.
+      Formal study and continuous practice are useful when they sharpen the quality of the next system, investigation or decision.
     </p>
   </section>
 
@@ -18,7 +20,7 @@ import { education, learning } from "../data/site";
     <SectionHeading
       eyebrow="Current learning"
       title="The thread behind the work."
-      intro="UCD is the current anchor; cloud operations, AI foundations, and applied experiments connect the theory to real constraints."
+      intro="UCD is the current anchor; cloud operations, distributed systems and applied AI connect study to real constraints."
       id="learning-title"
     />
     <div class="focus-list">
@@ -44,7 +46,7 @@ import { education, learning } from "../data/site";
         <article class="education-item">
           <span class="meta-line">{item.period}</span>
           <h3>{item.programme}</h3>
-          <p>{item.institution}{item.note ? " · " + item.note : ""}</p>
+          <p>{item.institution}{item.note ? " - " + item.note : ""}</p>
         </article>
       ))}
     </div>

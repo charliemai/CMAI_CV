@@ -15,20 +15,20 @@ const { project } = Astro.props;
 <BaseLayout title={project.title + " | Charlie Mai"} description={project.summary} image={project.image}>
   <section class="detail-hero">
     <div>
-      <p class="eyebrow">{project.eyebrow} · {project.status}</p>
+      <p class="eyebrow">{project.eyebrow} - {project.status}</p>
       <h1>{project.title}</h1>
       <p class="lead">{project.summary}</p>
       <div class="button-row">
         <a class="button secondary" href="/projects/">Back to projects</a>
-        {project.href && <a class="button" href={project.href} target="_blank" rel="noreferrer">Open related product ↗</a>}
+        {project.href && <a class="button" href={project.href} target="_blank" rel="noreferrer">Open related product <span aria-hidden="true">-&gt;</span></a>}
       </div>
     </div>
     <div class="detail-art">
-      <img src={project.image} alt="" />
+      <img src={project.image} alt={project.title + " project illustration"} width="1200" height="680" />
     </div>
   </section>
 
-  <section class="detail-layout">
+  <section class="detail-layout" aria-label="Project overview">
     <aside class="detail-meta" aria-label="Project metadata">
       <div class="detail-meta-block">
         <span>Problem</span>
@@ -39,8 +39,12 @@ const { project } = Astro.props;
         <strong>{project.evidence}</strong>
       </div>
       <div class="detail-meta-block">
-        <span>Role</span>
+        <span>Ownership</span>
         <strong>{project.role}</strong>
+      </div>
+      <div class="detail-meta-block">
+        <span>Current status</span>
+        <strong>{project.currentStatus}</strong>
       </div>
       <div class="detail-meta-block">
         <span>Stack</span>
@@ -49,11 +53,46 @@ const { project } = Astro.props;
         </div>
       </div>
     </aside>
-    <div>
-      <h2>What this shows</h2>
-      <ul>
-        {project.bullets.map((bullet) => <li>{bullet}</li>)}
-      </ul>
+
+    <div class="detail-content">
+      <section class="detail-section" aria-labelledby="context-title">
+        <h2 id="context-title">Context and user problem</h2>
+        <p>{project.context}</p>
+      </section>
+      <section class="detail-section" aria-labelledby="ownership-title">
+        <h2 id="ownership-title">My ownership</h2>
+        <p>{project.ownership}</p>
+      </section>
+      <section class="detail-section" aria-labelledby="shape-title">
+        <h2 id="shape-title">Technical shape</h2>
+        <p>{project.technicalShape}</p>
+      </section>
+      <section class="detail-section" aria-labelledby="decisions-title">
+        <h2 id="decisions-title">Key engineering decisions</h2>
+        <ul>
+          {project.decisions.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+      <section class="detail-section" aria-labelledby="trust-title">
+        <h2 id="trust-title">Reliability and trust boundaries</h2>
+        <ul>
+          {project.trustBoundaries.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+      <section class="detail-section" aria-labelledby="testing-title">
+        <h2 id="testing-title">Testing and observability</h2>
+        <ul>
+          {project.testing.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+      <section class="detail-section" aria-labelledby="outcome-title">
+        <h2 id="outcome-title">Evidence and outcome</h2>
+        <p>{project.outcome}</p>
+      </section>
+      <section class="detail-section" aria-labelledby="next-title">
+        <h2 id="next-title">What I would improve next</h2>
+        <p>{project.next}</p>
+      </section>
     </div>
   </section>
 </BaseLayout>

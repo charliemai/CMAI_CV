@@ -1,0 +1,11 @@
+{
+  "redirects": [
+    { "source": "/insights", "destination": "/writing/", "permanent": true },
+    { "source": "/blog/", "destination": "/writing/", "permanent": true },
+    { "source": "/blog/tag/Learning", "destination": "/learning/", "permanent": true },
+    { "source": "/blog/self-evolving-ai-agents-my-vision-and-challenges", "destination": "/lab/", "permanent": true },
+    { "source": "/blog/ul-ai-certificate-what-i-learned-and-how-it-changed-my-builds", "destination": "/learning/", "permanent": true },
+    { "source": "/projects/rag-troubleshooting-gpt-assistant", "destination": "/projects/rag-troubleshooting-assistant/", "permanent": true },
+    { "source": "/services/", "destination": "/projects/", "permanent": true }
+  ]
+}

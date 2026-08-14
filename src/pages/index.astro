@@ -2,48 +2,42 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import SectionHeading from "../components/SectionHeading.astro";
-import {
-  experience,
-  focusAreas,
-  metrics,
-  profile,
-  projects,
-  writing,
-} from "../data/site";
+import { experience, focusAreas, metrics, profile, projects, writing } from "../data/site";
 
-const featuredProjects = projects.filter((project) => project.featured);
+const featuredProjects = projects.filter((project) => project.featured).slice(0, 3);
 const recentExperience = experience.slice(0, 3);
-const recentWriting = writing.slice(0, 2);
+const plannedWriting = writing.slice(0, 2);
 ---
 
-<BaseLayout title={profile.name + " | " + profile.title} description={profile.summary}>
+<BaseLayout
+  title="Charlie Mai | Cloud, DevOps & Production Reliability Engineer"
+  description="Dublin-based Cloud and DevOps engineer, former AWS CloudFront SME, specialising in production reliability, incident investigation, serverless systems and operational automation."
+>
   <section class="hero-grid section" aria-labelledby="hero-title">
     <div class="hero-copy">
-      <p class="eyebrow">Dublin · Cloud operations · Applied AI</p>
-      <h1 id="hero-title">{profile.title} building <em>clearer systems.</em></h1>
+      <p class="eyebrow">Dublin - Cloud operations - Production reliability</p>
+      <h1 id="hero-title">Cloud, DevOps &amp; <em>Production Reliability</em> Engineer.</h1>
       <p class="hero-subline">
-        National Broadband Ireland · Former AWS Cloud Support Engineer II / CloudFront SME · UCD MSc in Computer Science, AI
+        {profile.currentRole} - Former AWS Cloud Support Engineer II and CloudFront SME - Part-time UCD MSc student
       </p>
-      <p class="hero-lede">
-        {profile.summary}
-      </p>
+      <p class="hero-lede">{profile.summary}</p>
       <div class="button-row">
-        <a class="button" href="/cv/">Read the CV <span aria-hidden="true">↗</span></a>
-        <a class="button secondary" href="/projects/">See selected work</a>
+        <a class="button" href="/cv/">View experience <span aria-hidden="true">-&gt;</span></a>
+        <a class="button secondary" href={profile.cv}>Download CV</a>
       </div>
       <ul class="hero-proof" aria-label="Professional focus">
-        <li>Production support</li>
-        <li>AWS and CDN systems</li>
-        <li>Automation with evidence</li>
+        <li>AWS and serverless operations</li>
+        <li>Incident investigation and RCA</li>
+        <li>DevOps automation</li>
       </ul>
     </div>
 
-    <aside class="hero-aside" aria-label="Profile">
+    <aside class="hero-aside" aria-label="Profile and opportunities">
       <div class="hero-image-frame">
-        <img src={profile.image} alt="Portrait of Charlie Mai" />
+        <img src={profile.image} alt="Portrait of Charlie Mai" width="720" height="840" />
       </div>
       <div class="hero-note">
-        <strong>Currently</strong>
+        <strong>Selective opportunities</strong>
         <span>{profile.availability}</span>
       </div>
     </aside>
@@ -52,8 +46,8 @@ const recentWriting = writing.slice(0, 2);
   <section class="section metrics-section" aria-labelledby="proof-title">
     <SectionHeading
       eyebrow="Proof points"
-      title="A career built across the stack."
-      intro="The strongest signal is not a list of tools. It is the pattern: high-stakes support, measurable delivery, and useful systems that people can operate."
+      title="Evidence from building, delivering and operating systems."
+      intro="The strongest signal is a pattern: production pressure, measurable delivery and practical automation that people can operate."
       id="proof-title"
     />
     <div class="metric-grid">
@@ -69,12 +63,12 @@ const recentWriting = writing.slice(0, 2);
   <section class="section split-section" aria-labelledby="focus-title">
     <div>
       <SectionHeading
-        eyebrow="What I bring"
-        title="Technical depth with a delivery mindset."
-        intro="I work best where the problem is real, the system is complex, and the next improvement needs to be practical."
+        eyebrow="Core capabilities"
+        title="Technical depth with an operator's mindset."
+        intro="I work where a complex system, a real user problem and an accountable next decision meet."
         id="focus-title"
       />
-      <a class="text-link" href="/cv/">Explore experience and education <span aria-hidden="true">↗</span></a>
+      <a class="text-link" href="/cv/">View the full experience and skills <span aria-hidden="true">-&gt;</span></a>
     </div>
     <div class="focus-list">
       {focusAreas.map((area) => (
@@ -92,15 +86,15 @@ const recentWriting = writing.slice(0, 2);
   <section class="section" aria-labelledby="projects-title">
     <SectionHeading
       eyebrow="Selected work"
-      title="Projects with a reason to exist."
-      intro="A small set of products and experiments that show how I think: start with a human job, make the system observable, then improve it."
+      title="Three projects with a reason to exist."
+      intro="Case studies show the human job, the technical shape, the trust boundary and the evidence - not just a stack list."
       id="projects-title"
     />
     <div class="project-grid">
       {featuredProjects.map((project) => <ProjectCard project={project} />)}
     </div>
     <div class="button-row">
-      <a class="button secondary" href="/projects/">Browse all projects <span aria-hidden="true">↗</span></a>
+      <a class="button secondary" href="/projects/">Browse all projects <span aria-hidden="true">-&gt;</span></a>
     </div>
   </section>
 
@@ -108,17 +102,17 @@ const recentWriting = writing.slice(0, 2);
     <div>
       <SectionHeading
         eyebrow="Career signal"
-        title="From incidents to outcomes."
-        intro="The recent chapter combines operational support, cloud expertise, cross-functional delivery, and applied AI study."
+        title="Build systems -> deliver systems -> operate them under pressure."
+        intro="The recent chapter combines production support, AWS expertise, CDN delivery, technical coordination and applied AI study."
         id="career-title"
       />
-      <a class="text-link" href="/learning/">See the learning thread <span aria-hidden="true">↗</span></a>
+      <a class="text-link" href="/learning/">See the learning thread <span aria-hidden="true">-&gt;</span></a>
     </div>
     <div class="mini-timeline">
       {recentExperience.map((role) => (
         <article class="mini-timeline-item">
           <time>{role.period}</time>
-          <h3>{role.position} · {role.company}</h3>
+          <h3>{role.position} - {role.company}</h3>
           <p>{role.summary}</p>
         </article>
       ))}
@@ -127,17 +121,17 @@ const recentWriting = writing.slice(0, 2);
 
   <section class="section" aria-labelledby="writing-title">
     <SectionHeading
-      eyebrow="Writing"
-      title="Notes from the work."
-      intro="Short reflections on production support, automation, AI systems, and building a portfolio without the noise of a personal dashboard."
+      eyebrow="Writing in development"
+      title="A secondary layer, kept honest."
+      intro="These are planned notes, not published articles. The work comes first; writing will follow when there is useful material to share."
       id="writing-title"
     />
     <div class="writing-list">
-      {recentWriting.map((post) => (
+      {plannedWriting.map((post) => (
         <article class="writing-item">
           <time>{post.date}</time>
           <div>
-            <span class="tag">{post.tag}</span>
+            <span class="tag">{post.status}</span>
             <h3>{post.title}</h3>
             <p>{post.summary}</p>
           </div>
@@ -145,7 +139,7 @@ const recentWriting = writing.slice(0, 2);
       ))}
     </div>
     <div class="button-row">
-      <a class="button secondary" href="/writing/">Read all writing <span aria-hidden="true">↗</span></a>
+      <a class="button secondary" href="/writing/">See writing status <span aria-hidden="true">-&gt;</span></a>
     </div>
   </section>
 </BaseLayout>
