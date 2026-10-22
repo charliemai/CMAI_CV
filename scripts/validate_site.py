@@ -80,7 +80,7 @@ def main() -> int:
         "former CloudFront expertise": "CloudFront SME",
         "UCD canonical title": "MSc in Computer Science (Negotiated Learning)",
         "UCD pathway wording": "AI-focused pathway",
-        "experience proof": "15+",
+        "experience proof": "17+",
         "public impact proof": "440k+",
         "AWS support proof": "457",
         "natural AWS ranking wording": "Ranked #1 for customer satisfaction",
@@ -97,6 +97,7 @@ def main() -> int:
         "encoding artefact": "-- IT professional",
         "old positioning": "living portfolio",
         "old positioning 2": "growth log",
+        "stale career duration": "15+ years",
         "incorrect UCD title": "MSc in Computer Science (Negotiated Learning), Artificial Intelligence",
         "unscoped AWS ranking": "AWS #1",
         "awkward Top 1 wording": "Top 1",
@@ -210,6 +211,7 @@ def main() -> int:
                 fail(f"CV PDF page is not A4: {width} x {height}", failures)
         for label, needle in {
             "mobile number in PDF": "0874614368",
+            "stale career duration in PDF": "15+ years",
             "stale duration in PDF": "16 years",
             "PDF separator artefact": "--",
             "incorrect UCD title in PDF": "MSc in Computer Science (Negotiated Learning), Artificial Intelligence",
@@ -222,6 +224,7 @@ def main() -> int:
         for label, needle in {
             "canonical UCD title in PDF": "MSc in Computer Science (Negotiated Learning)",
             "AI pathway wording in PDF": "AI-focused pathway",
+            "career start wording in PDF": "Career since Feb 2009",
             "natural ranking wording in PDF": "Ranked #1 for customer satisfaction",
             "natural case wording in PDF": "Resolved 457 complex AWS support cases",
             "earlier-career heading in PDF": "Earlier Engineering & Technical Leadership",
@@ -229,7 +232,7 @@ def main() -> int:
             if needle not in pdf_text:
                 fail(f"missing {label}: {needle}", failures)
         for proof_row in [
-            "15+ - years across engineering and operations",
+            "17+ - years across engineering and operations; career since Feb 2009",
             "440k+ - civic reports handled by a public platform",
             "#1 - customer satisfaction ranking within an AWS support team",
             "457 - AWS support cases resolved; Top 2 case-performance ranking",

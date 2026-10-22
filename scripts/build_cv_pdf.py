@@ -272,7 +272,7 @@ def build() -> None:
     story.extend(section("Profile"))
     story.append(
         p(
-            "Cloud, DevOps and production-reliability engineer with 15+ years across software delivery, distributed systems, technical leadership and production operations. Former AWS Cloud Support Engineer II and CloudFront SME with deep experience in incident investigation, root-cause analysis and customer-facing technical resolution. Currently operating AWS-based systems and building practical automation for complex integration and support workflows. Applies AI selectively to evidence-grounded troubleshooting and operational decision support.",
+            "Cloud, DevOps and production-reliability engineer with 17+ years across software delivery, distributed systems, technical leadership and production operations. Career since Feb 2009. Former AWS Cloud Support Engineer II and CloudFront SME with deep experience in incident investigation, root-cause analysis and customer-facing technical resolution. Currently operating AWS-based systems and building practical automation for complex integration and support workflows. Applies AI selectively to evidence-grounded troubleshooting and operational decision support.",
             "PdfBody",
         )
     )
@@ -311,7 +311,7 @@ def build() -> None:
 
     story.extend(section("Selected proof"))
     metrics = [
-        [p('<font color="#075B61"><b>15+</b></font> - years across engineering and operations', "PdfMetricRow")],
+        [p('<font color="#075B61"><b>17+</b></font> - years across engineering and operations; career since Feb 2009', "PdfMetricRow")],
         [p('<font color="#075B61"><b>440k+</b></font> - civic reports handled by a public platform', "PdfMetricRow")],
         [p('<font color="#075B61"><b>#1</b></font> - customer satisfaction ranking within an AWS support team', "PdfMetricRow")],
         [p('<font color="#075B61"><b>457</b></font> - AWS support cases resolved; Top 2 case-performance ranking', "PdfMetricRow")],

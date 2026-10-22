@@ -77,7 +77,7 @@ export const profile = {
 };
 
 export const metrics = [
-  { value: "15+", label: "years across engineering, cloud operations and technical leadership" },
+  { value: "17+", label: "years across engineering, cloud operations and technical leadership; career since Feb 2009" },
   { value: "440k+", label: "civic reports handled by a public-facing platform" },
   { value: "#1", label: "customer satisfaction ranking within an AWS support team" },
   { value: "457", label: "AWS support cases resolved; Top 2 case-performance ranking" },
